@@ -42,9 +42,9 @@ This project is my personal IT home lab, gaining hands-on experience with **Wind
 Created two VMs in VirtualBox: Server (`Windows Server 2022`) and Client (`Windows 11`).  
 
 **Screenshots:**  
-![Step 1-0](./screenshots/Lab/Lab_1.0.png)  
-![Step 1-1](./screenshots/Lab/Lab_1.1.png)  
-![Step 1-2](./screenshots/Lab/Lab_1.2.png)  
+![Step 1-0](./screenshots/Lab/1.0.png)  
+![Step 1-1](./screenshots/Lab/1.1.png)  
+![Step 1-2](./screenshots/Lab/1.2.png)  
 
 ---
 
@@ -54,10 +54,10 @@ Installed **AD DS** on the server and promoted it to **Domain Controller**.
 - Rebooted to apply changes  
 
 **Screenshots:**  
-![Step 2-0](./screenshots/Lab/Lab_2.0.png)  
-![Step 2-1](./screenshots/Lab/Lab_2.1.png)  
-![Step 2-2](./screenshots/Lab/Lab_2.2.png)  
-![Step 2-3](./screenshots/Lab/Lab_2.3.png)  
+![Step 2-0](./screenshots/Lab/2.0.png)  
+![Step 2-1](./screenshots/Lab/2.1.png)  
+![Step 2-2](./screenshots/Lab/2.2.png)  
+![Step 2-3](./screenshots/Lab/2.3.png)  
 
 ---
 
@@ -67,9 +67,9 @@ Installed **VirtualBox Guest Additions** and created AD users:
 - Melvin L Williams  
 
 **Screenshots:**  
-![Step 3-0](./screenshots/Lab/Lab_3.0.png)  
-![Step 3-1](./screenshots/Lab/Lab_3.1.png)  
-![Step 3-2](./screenshots/Lab/Lab_3.2.png)  
+![Step 3-0](./screenshots/Lab/3.0.png)  
+![Step 3-1](./screenshots/Lab/3.1.png)  
+![Step 3-2](./screenshots/Lab/3.2.png)  
 
 ---
 
@@ -80,13 +80,13 @@ Installed **VirtualBox Guest Additions** and created AD users:
 - Enabled Remote Desktop  
 
 **Screenshots:**  
-![Step 4-0](./screenshots/Lab/Lab_4.0.png)  
-![Step 4-1](./screenshots/Lab/Lab_4.1.png)  
-![Step 4-2](./screenshots/Lab/Lab_4.2.png)  
-![Step 4-3](./screenshots/Lab/Lab_4.3.png)  
-![Step 4-4](./screenshots/Lab/Lab_4.4.png)  
-![Step 4-5](./screenshots/Lab/Lab_4.5.png)  
-![Step 4-6](./screenshots/Lab/Lab_4.6.png)  
+![Step 4-0](./screenshots/Lab/4.0.png)  
+![Step 4-1](./screenshots/Lab/4.1.png)  
+![Step 4-2](./screenshots/Lab/4.2.png)  
+![Step 4-3](./screenshots/Lab/4.3.png)  
+![Step 4-4](./screenshots/Lab/4.4.png)  
+![Step 4-5](./screenshots/Lab/4.5.png)  
+![Step 4-6](./screenshots/Lab/4.6.png)  
 
 ---
 
@@ -100,13 +100,13 @@ Installed **VirtualBox Guest Additions** and created AD users:
 - Verified by testing failed logins, then unlocked  
 
 **Screenshots:**  
-![Step 5-0](./screenshots/Lab/Lab_5.0.png)  
-![Step 5-1](./screenshots/Lab/Lab_5.1.png)  
-![Step 5-2](./screenshots/Lab/Lab_5.2.png)  
-![Step 5-3](./screenshots/Lab/Lab_5.3.png)  
-![Step 5-4](./screenshots/Lab/Lab_5.4.png)  
-![Step 5-5](./screenshots/Lab/Lab_5.5.png)  
-![Step 5-6](./screenshots/Lab/Lab_5.6.png)  
+![Step 5-0](./screenshots/Lab/5.0.png)  
+![Step 5-1](./screenshots/Lab/5.1.png)  
+![Step 5-2](./screenshots/Lab/5.2.png)  
+![Step 5-3](./screenshots/Lab/5.3.png)  
+![Step 5-4](./screenshots/Lab/5.4.png)  
+![Step 5-5](./screenshots/Lab/5.5.png)  
+![Step 5-6](./screenshots/Lab/5.6.png)  
 
 ---
 
@@ -116,8 +116,8 @@ Installed **VirtualBox Guest Additions** and created AD users:
 - Ran vulnerability remediation  
 
 **Screenshots:**  
-![Step 6-0](./screenshots/Lab/Lab_6.0.png)  
-![Step 6-1](./screenshots/Lab/Lab_6.1.png)  
+![Step 6-0](./screenshots/Lab/6.0.png)  
+![Step 6-1](./screenshots/Lab/6.1.png)  
 
 ---
 
