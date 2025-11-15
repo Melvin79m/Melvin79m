@@ -41,4 +41,11 @@ Here are my IT certifications, verified through Credly and Microsoft:
 - IT Support: User account management, patching, remote access
 - Security basics: Vulnerability remediation, account lockout policies
 
+## Contact
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/melvin-williams-555b6625)  
+[![Email](https://img.shields.io/badge/Email-Contact-green?logo=gmail&logoColor=white)](mailto:Mwilliams719@gmail.com)
+
+
+
 
