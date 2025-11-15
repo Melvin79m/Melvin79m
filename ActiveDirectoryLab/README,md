@@ -1,0 +1,104 @@
+# Active Directory Home Lab Project
+
+This project is the start of my personal IT home lab, where I’m gaining hands-on experience with **Windows Server 2022** and **Active Directory**.  
+
+The goal is to build a small virtual network using **Oracle VirtualBox** to simulate a real-world business environment.  
+
+### Tools & Environment
+- **Windows 11 ISO** – Client machine  
+- **Windows Server 2022 ISO** – Domain Controller  
+- **Oracle VirtualBox** – Virtual machine manager  
+
+### Objectives
+Through this lab, I am focusing on:  
+- Setting up an **Active Directory Domain**  
+- **User and group management**  
+- **Group Policies**  
+- **DNS and DHCP services**  
+
+> **Note:** This is an ongoing project and I will continue adding more steps, screenshots, and documentation as I expand my lab.  
+
+---
+
+## Step 1: Installing the ISOs in VirtualBox
+I created two virtual machines:  
+- **Windows Server 2022** – Domain Controller  
+- **Windows 11** – Client machine  
+
+**Screenshots:**  
+![Step 1](./screenshots/step1_installing_isos.png)  
+
+---
+
+## Step 2: Installing and Configuring Active Directory
+Installed **Active Directory Domain Services (AD DS)** on Windows Server 2022 and promoted the server to a **Domain Controller**.  
+- Created a new forest and domain: **MelTech.com**  
+- Rebooted the server to apply changes  
+
+**Screenshots:**  
+![Step 2](./screenshots/step2_configuring_ad.png)  
+
+---
+
+## Step 3: Installing Guest Additions and Creating Users
+- Installed **VirtualBox Guest Additions** to enable folder sharing  
+- Created **Active Directory users**:  
+  - Thomas C Anderson  
+  - Melvin L Williams  
+
+**Screenshots:**  
+![Step 3](./screenshots/step3_create_users.png)  
+
+---
+
+## Step 4: Network Configuration and Domain Connection
+- Configured static IP addresses:  
+  - Server: `10.1.10.2`  
+  - Client: `10.1.10.3`  
+- Joined Windows 11 client to **MelTech.com** domain  
+- Verified connection in Active Directory (Desktop01 appeared under Computers)  
+- Enabled Remote Desktop access and successfully connected  
+
+**Screenshots:**  
+![Step 4](./screenshots/step4_network_domain.png)  
+
+---
+
+## Step 5: User Account Management and Security Policies
+**Key actions:**  
+- Reset, activate, disable, and delete accounts  
+- Configure login hour restrictions (Thomas C Anderson: Mon–Fri, 6 a.m.–6 p.m.)  
+- Updated Group Policy:  
+  - Maximum password age: 90 days  
+  - Account lockout threshold: 3 failed attempts  
+  - Lockout duration: 360 minutes  
+- Verified policies by testing failed login attempts  
+- Unlocked account after test  
+
+**Screenshots:**  
+![Step 5](./screenshots/step5_gpo.png)  
+
+---
+
+## Step 6: Installing and Using Action1
+- Installed **Action1** on Windows Server 2022  
+- Deployed **5 updates**  
+- Ran **vulnerability remediation** for compliance and auditing  
+
+**Screenshots:**  
+![Step 6](./screenshots/step6_action1.png)  
+
+---
+
+## Lessons Learned
+- Hands-on Active Directory setup and domain management  
+- Practical experience with Group Policy and security enforcement  
+- Network configuration and client-domain connectivity  
+- Patch management and vulnerability remediation  
+
+---
+
+## Certifications
+- [CompTIA Security+](https://www.credly.com/badges/d89c7144-279d-4689-b175-23dd8e4b53d8/public_url)  
+- [Microsoft Azure Fundamentals (AZ-900)](https://learn.microsoft.com/api/credentials/share/en-us/MelvinWilliams-2022/9BF8F9D963B6FCA9?sharingId=49A91F7AAEFFECF3)  
+- Currently studying for: Cisco Certified Network Associate (CCNA)
