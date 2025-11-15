@@ -21,12 +21,13 @@ Through this lab, I am focusing on:
 ---
 
 ## Step 1: Installing the ISOs in VirtualBox
-I created two virtual machines:  
-- **Windows Server 2022** – Domain Controller  
-- **Windows 11** – Client machine  
 
-**Screenshots:**  
-![Step 1](./screenshots/step1_installing_isos.png)  
+I created two virtual machines in Oracle VirtualBox—one for **Windows Server 2022** and one for **Windows 11**. Each VM was set up using its respective ISO file. Windows Server 2022 will act as the domain controller, and Windows 11 will serve as the client machine.  
+
+![Step 1-0](./screenshots/Lab/Lab 1.0.png)  
+![Step 1-1](./screenshots/Lab/Lab 1.1.png)  
+![Step 1-2](./screenshots/Lab/Lab 1.2.png)
+
 
 ---
 
