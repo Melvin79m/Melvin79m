@@ -5,7 +5,7 @@
 
 # Active Directory Home Lab Project
 
-This project is the start of my personal IT home lab, where I’m getting hands-on experience with **Windows Server 2022** and **Active Directory**.
+This project is the start of my personal IT home lab, where I’ll be getting hands-on experience with **Windows Server 2022** and **Active Directory**.
 
 The goal is to build a small virtual network using **Oracle VirtualBox** to simulate a real-world business environment. I’ve started by downloading the core tools:
 
@@ -13,14 +13,14 @@ The goal is to build a small virtual network using **Oracle VirtualBox** to simu
 - Windows Server 2022 ISO – for the domain controller  
 - VirtualBox – to manage and run the virtual machines
 
-Through this project, I’m setting up:
+Through this project, I’ll be setting up:
 
 - An **Active Directory Domain**  
 - **User and group management**  
 - **Group Policies**  
-- **DNS and DHCP services**
+- **DNS and DHCP services**  
 
-This lab will continue to grow as I dive deeper into networking, system administration, and cybersecurity. My goal is to build real, hands-on experience that connects what I’m studying with how IT works in the real world.
+> **Note:** This is an ongoing project and I will continue adding more steps, screenshots, and documentation as I expand my lab.
 
 ---
 
