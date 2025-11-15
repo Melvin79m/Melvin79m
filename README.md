@@ -32,5 +32,13 @@ Here are my IT certifications, verified through Credly and Microsoft:
 - [Microsoft Azure Fundamentals (AZ-900)](https://learn.microsoft.com/api/credentials/share/en-us/MelvinWilliams-2022/9BF8F9D963B6FCA9?sharingId=49A91F7AAEFFECF3)
 - Currently studying for: Cisco Certified Network Associate (CCNA)
 
+## Skills
+
+- Windows Server 2022, Active Directory, Group Policy
+- Windows 11, Linux (Ubuntu)
+- Networking: IPv4, Subnetting, DHCP, DNS, VLANs
+- Cloud: Microsoft Azure Fundamentals
+- IT Support: User account management, patching, remote access
+- Security basics: Vulnerability remediation, account lockout policies
 
 
