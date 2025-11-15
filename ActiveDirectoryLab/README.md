@@ -5,41 +5,28 @@
 
 # Active Directory Home Lab Project
 
-This project is my personal IT home lab, gaining hands-on experience with **Windows Server 2022** and **Active Directory** using **Oracle VirtualBox** to simulate a small business environment.
+This project is the start of my personal IT home lab, where I’m getting hands-on experience with **Windows Server 2022** and **Active Directory**.
+
+The goal is to build a small virtual network using **Oracle VirtualBox** to simulate a real-world business environment. I’ve started by downloading the core tools:
+
+- Windows 11 ISO – for the client machine  
+- Windows Server 2022 ISO – for the domain controller  
+- VirtualBox – to manage and run the virtual machines
+
+Through this project, I’m setting up:
+
+- An **Active Directory Domain**  
+- **User and group management**  
+- **Group Policies**  
+- **DNS and DHCP services**
+
+This lab will continue to grow as I dive deeper into networking, system administration, and cybersecurity. My goal is to build real, hands-on experience that connects what I’m studying with how IT works in the real world.
 
 ---
 
-## Table of Contents
-- [Tools & Environment](#tools--environment)  
-- [Objectives](#objectives)  
-- [Step 1: Installing ISOs](#step-1-installing-the-isos)  
-- [Step 2: Configuring Active Directory](#step-2-configuring-active-directory)  
-- [Step 3: Installing Guest Additions and Users](#step-3-installing-guest-additions-and-users)  
-- [Step 4: Network Configuration](#step-4-network-configuration)  
-- [Step 5: User Management & Security Policies](#step-5-user-management--security-policies)  
-- [Step 6: Using Action1](#step-6-using-action1)  
-- [Lessons Learned](#lessons-learned)  
-- [Certifications](#certifications)  
+## Step 1: Installing the ISOs in VirtualBox
 
----
-
-## Tools & Environment
-- **Windows 11 ISO** – Client machine  
-- **Windows Server 2022 ISO** – Domain Controller  
-- **Oracle VirtualBox** – Virtual machine manager  
-
-## Objectives
-- Build an **Active Directory Domain**  
-- Manage **users and groups**  
-- Apply **Group Policies**  
-- Configure **DNS and DHCP services**  
-
-> **Note:** This is ongoing; more steps and screenshots will be added.
-
----
-
-## Step 1: Installing the ISOs
-Created two VMs in VirtualBox: Server (`Windows Server 2022`) and Client (`Windows 11`).  
+I created two virtual machines in Oracle VirtualBox—one for **Windows Server 2022** and one for **Windows 11**. Each VM was set up using its respective ISO file. Windows Server 2022 will act as the domain controller, and Windows 11 will serve as the client machine.
 
 **Screenshots:**  
 ![Step 1-0](./screenshots/Lab/1.0.png)  
@@ -48,10 +35,9 @@ Created two VMs in VirtualBox: Server (`Windows Server 2022`) and Client (`Windo
 
 ---
 
-## Step 2: Configuring Active Directory
-Installed **AD DS** on the server and promoted it to **Domain Controller**.  
-- Created forest & domain: `MelTech.com`  
-- Rebooted to apply changes  
+## Step 2: Installing and Configuring Active Directory
+
+Installed **Active Directory Domain Services (AD DS)** on Windows Server 2022 and promoted the server to a **Domain Controller**. Created a new forest and domain named **MelTech.com**, then rebooted the server to complete the setup.
 
 **Screenshots:**  
 ![Step 2-0](./screenshots/Lab/2.0.png)  
@@ -61,10 +47,9 @@ Installed **AD DS** on the server and promoted it to **Domain Controller**.
 
 ---
 
-## Step 3: Installing Guest Additions and Users
-Installed **VirtualBox Guest Additions** and created AD users:  
-- Thomas C Anderson  
-- Melvin L Williams  
+## Step 3: Installing Guest Additions and Creating Users
+
+Installed **VirtualBox Guest Additions** on the Windows Server 2022 VM to enable folder sharing between the host and VM. Created two **Active Directory user accounts**: **Thomas C Anderson** and **Melvin L Williams**, used to test domain connectivity from the client machine.
 
 **Screenshots:**  
 ![Step 3-0](./screenshots/Lab/3.0.png)  
@@ -73,11 +58,9 @@ Installed **VirtualBox Guest Additions** and created AD users:
 
 ---
 
-## Step 4: Network Configuration
-- Static IPs: Server `10.1.10.2`, Client `10.1.10.3`  
-- Joined Windows 11 client to `MelTech.com` domain  
-- Verified in Active Directory (`Desktop01` under Computers)  
-- Enabled Remote Desktop  
+## Step 4: Network Configuration and Domain Connection
+
+Configured network settings and connected the Windows 11 client to the domain. Assigned static IP addresses: `10.1.10.2` to the Windows Server 2022 Domain Controller, `10.1.10.3` to the Windows 11 client. Verified the connection by confirming **Desktop01** appeared under the Computers container in Active Directory Users and Computers. Enabled Remote Desktop access and confirmed connectivity.
 
 **Screenshots:**  
 ![Step 4-0](./screenshots/Lab/4.0.png)  
@@ -90,14 +73,17 @@ Installed **VirtualBox Guest Additions** and created AD users:
 
 ---
 
-## Step 5: User Management & Security Policies
-- Reset, activate, disable, delete accounts  
-- Login hours: Thomas C Anderson Mon–Fri 6am–6pm  
-- Group Policy:  
-  - Max password age: 90 days  
-  - Lockout threshold: 3 failed attempts  
-  - Lockout duration: 360 min  
-- Verified by testing failed logins, then unlocked  
+## Step 5: User Account Management and Security Policies
+
+Managed user accounts and applied security policies within Active Directory. Practiced resetting passwords, activating/disabling accounts, deleting accounts, and setting login hour restrictions (e.g., Thomas C Anderson Mon–Fri 6:00 a.m.–6:00 p.m.).  
+
+Under **Group Policy**, updated security settings:
+
+- Max password age: 90 days  
+- Account lockout threshold: 3 failed attempts  
+- Lockout duration: 360 minutes  
+
+Verified the policies by testing failed logins, then unlocked accounts in **Active Directory Users and Computers**.
 
 **Screenshots:**  
 ![Step 5-0](./screenshots/Lab/5.0.png)  
@@ -110,10 +96,9 @@ Installed **VirtualBox Guest Additions** and created AD users:
 
 ---
 
-## Step 6: Using Action1
-- Installed **Action1**  
-- Deployed 5 updates  
-- Ran vulnerability remediation  
+## Step 6: Installing and Using Action1
+
+Downloaded and installed **Action1** on the Windows Server 2022 Domain Controller. Scanned for missing updates and deployed **five updates**, then ran **vulnerability remediation** to identify and address potential security risks.
 
 **Screenshots:**  
 ![Step 6-0](./screenshots/Lab/6.0.png)  
@@ -122,6 +107,7 @@ Installed **VirtualBox Guest Additions** and created AD users:
 ---
 
 ## Lessons Learned
+
 - Active Directory setup & domain management  
 - Group Policy & security enforcement  
 - Network configuration & client-domain connectivity  
@@ -130,6 +116,7 @@ Installed **VirtualBox Guest Additions** and created AD users:
 ---
 
 ## Certifications
+
 - CompTIA Security+  
 - Microsoft Azure Fundamentals (AZ-900)  
 - Currently studying for: Cisco CCNA
