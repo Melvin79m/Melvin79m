@@ -24,6 +24,19 @@ Through this project, I’ll be setting up:
 
 ---
 
+## Table of Contents
+
+1. [Step 1: Installing the ISOs in VirtualBox](#step-1-installing-the-isos-in-virtualbox)  
+2. [Step 2: Installing and Configuring Active Directory](#step-2-installing-and-configuring-active-directory)  
+3. [Step 3: Installing Guest Additions and Creating Users](#step-3-installing-guest-additions-and-creating-users)  
+4. [Step 4: Network Configuration and Domain Connection](#step-4-network-configuration-and-domain-connection)  
+5. [Step 5: User Account Management and Security Policies](#step-5-user-account-management-and-security-policies)  
+6. [Step 6: Installing and Using Action1](#step-6-installing-and-using-action1)  
+7. [Notes / Observations](#notes--observations)  
+8. [Certifications](#certifications)  
+
+---
+
 ## Step 1: Installing the ISOs in VirtualBox
 
 I created two virtual machines in Oracle VirtualBox—one for **Windows Server 2022** and one for **Windows 11**. Each VM was set up using its respective ISO file. Windows Server 2022 will act as the domain controller, and Windows 11 will serve as the client machine.
@@ -106,7 +119,7 @@ Downloaded and installed **Action1** on the Windows Server 2022 Domain Controlle
 
 ---
 
-## Lessons Learned
+## Notes / Observations
 
 - Active Directory setup & domain management  
 - Group Policy & security enforcement  
@@ -119,4 +132,4 @@ Downloaded and installed **Action1** on the Windows Server 2022 Domain Controlle
 
 - CompTIA Security+  
 - Microsoft Azure Fundamentals (AZ-900)  
-- Currently studying for: Cisco CCNA
+- Currently studying for Cisco CCNA
