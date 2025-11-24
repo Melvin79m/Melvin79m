@@ -32,8 +32,10 @@ Through this project, I’ll be setting up:
 4. [Step 4: Network Configuration and Domain Connection](#step-4-network-configuration-and-domain-connection)  
 5. [Step 5: User Account Management and Security Policies](#step-5-user-account-management-and-security-policies)  
 6. [Step 6: Installing and Using Action1](#step-6-installing-and-using-action1)  
-7. [Notes / Observations](#notes--observations)  
-8. [Certifications](#certifications)  
+7. [Step 7: Updating the Lab Environment](#step-7-updating-the-lab-environment)  
+8. [Step 8: Preparing for Enterprise Practice](#step-8-preparing-for-enterprise-practice)  
+9. [Notes / Observations](#notes--observations)  
+10. [Certifications](#certifications)  
 
 ---
 
@@ -116,6 +118,53 @@ Downloaded and installed **Action1** on the Windows Server 2022 Domain Controlle
 **Screenshots:**  
 ![Step 6-0](./screenshots/Lab/6.0.png)  
 ![Step 6-1](./screenshots/Lab/6.1.png)  
+
+---
+
+## Step 7: Updating the Lab Environment
+
+I updated the lab environment by adjusting the network adapters on the Domain Controller VM. There are now two NICs: the first adapter, labeled **Internal**, connects to the lab network with a static IP of `10.1.10.2`, and the second adapter, labeled **Internet**, uses NAT to provide access to the internet. I renamed both adapters to distinguish them clearly. The Domain Controller will act as the default gateway for the internal network, so no gateway was set on the internal NIC. DNS will also be handled by the Domain Controller.
+
+Next, I set up a DHCP server on the Domain Controller so that client machines can receive IP addresses and access the internet through NAT. I created a new DHCP scope with an IP range from `10.1.10.100` to `10.1.10.200` and a subnet mask of `255.255.255.0`. The default gateway for the scope is the Domain Controller (`10.1.10.2`). I verified that the scope is active and that the IP pool is correctly configured and available for clients.
+
+This step is ongoing, and I will continue adding updates and configurations as I progress through the lab.
+
+**Screenshots:**  
+![Step 7-0](./screenshots/Lab/7.0.png)  
+![Step 7-1](./screenshots/Lab/7.1.png)  
+![Step 7-2](./screenshots/Lab/7.2.png)  
+![Step 7-3](./screenshots/Lab/7.3.png)  
+![Step 7-4](./screenshots/Lab/7.4.png)  
+![Step 7-5](./screenshots/Lab/7.5.png)  
+![Step 7-6](./screenshots/Lab/7.6.png)  
+![Step 7-7](./screenshots/Lab/7.7.png)  
+![Step 7-8](./screenshots/Lab/7.8.png)  
+![Step 7-9](./screenshots/Lab/7.9.png)  
+![Step 7-10](./screenshots/Lab/7.10.png)  
+![Step 7-11](./screenshots/Lab/7.11.png)  
+![Step 7-12](./screenshots/Lab/7.12.png)  
+![Step 7-13](./screenshots/Lab/7.13.png)  
+![Step 7-14](./screenshots/Lab/7.14.png)  
+![Step 7-15](./screenshots/Lab/7.15.png)  
+![Step 7-16](./screenshots/Lab/7.16.png)  
+![Step 7-17](./screenshots/Lab/7.17.png)  
+
+---
+
+## Step 8: Preparing for Enterprise Practice
+
+Created and imported a batch of **1,000 Active Directory user accounts** using a structured CSV file and PowerShell automation, replicating large-scale identity provisioning workflows used in enterprise environments.
+
+Created a new administrative user named **Melvin L Williams** with the username **a-mwilliams** and added it to the **Admins OU**, assigning **Domain Admin privileges**. Verified proper access by logging in with **a-mwilliams** to confirm administrative permissions.
+
+This step establishes the foundation for ongoing lab exercises, where I will practice:
+
+- Assigning permissions and managing roles for users and groups  
+- Simulating enterprise workflows with a ticketing system  
+- Running updates, patches, and vulnerability checks with **Action1**  
+- Experimenting with Group Policies and Active Directory features in a controlled environment  
+
+This lab serves as a **hands-on practice ground** for mastering Active Directory administration, network management, and security operations in a safe, virtualized environment.
 
 ---
 
