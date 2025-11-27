@@ -8,8 +8,12 @@ I’m building a strong foundation in IT support while working toward a long-ter
 This repository is organized into four main sections, each documenting a different part of my hands-on IT and networking experience.
 
 - **Active Directory Lab**  
-  Setup of a Windows Server 2022 domain, users, Group Policy, permissions, and remote access.  
-  [View Project](./ActiveDirectoryLab/README.md)
+  - **Active Directory Setup** — Building a Windows Server 2022 domain, users, OU structure, DNS, DHCP, and core Group Policy.  
+    [View Project](./ActiveDirectoryLab/README.md)
+
+  - **Active Directory User & Access Administration Project** — Managing users, groups, permissions, roles, OU structure, department layouts, floors/shifts, GPOs, and real-world sysadmin workflows in a full enterprise-style environment.  
+    [View Project](./ActiveDirectory_UserAccessAdmin/README.md)
+
 
 - **Networking Lab**  
   IP addressing, routing, DHCP, DNS, NAT, VLANs, and troubleshooting fundamentals.  
