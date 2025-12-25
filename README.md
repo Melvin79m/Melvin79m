@@ -37,12 +37,13 @@ Here are my IT certifications, verified through Credly and Microsoft:
 
 ## Skills
 
+- IT Support: User account management, access control, authentication troubleshooting, remote support
 - Windows Server 2022, Active Directory, Group Policy
+- Microsoft 365 & Entra ID (User provisioning, licensing, MFA)
 - Windows 11, Linux (Ubuntu)
 - Networking: IPv4, Subnetting, DHCP, DNS, VLANs
-- Cloud: Microsoft Azure Fundamentals
-- IT Support: User account management, patching, remote access
-- Security basics: Vulnerability remediation, account lockout policies
+- Security fundamentals: Account lockout policies, least privilege, vulnerability remediation
+
 
 ## Contact
 
