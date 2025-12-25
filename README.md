@@ -1,11 +1,20 @@
 ## Hi, I'm Melvin Williams
- IT Support Professional Focused on Network Engineering
- 
-I’m building a strong foundation in IT support while working toward a long-term career in network engineering. My approach is hands-on: I develop labs, break things on purpose, fix them, and document the process so I can learn and improve. This repository organizes my work across Active Directory, Azure, Networking, and Security, highlighting the areas I’m actively developing as I prepare for real-world IT environments.
+Entry-Level IT Support & Service Desk Technician
+
+I’m an entry-level IT Support professional with hands-on experience supporting Windows, Active Directory, and Microsoft 365 environments through structured home labs that mirror real-world help desk workflows. I focus on user support, authentication issues, access management, and troubleshooting common Tier 1 problems.
+
+My long-term goal is network engineering, but my current focus is building strong fundamentals in IT support, identity, and networking by creating realistic environments, intentionally breaking things, fixing them, and documenting the process clearly.
+
 
 ## Projects
 
 This repository is organized into four main sections, each documenting a different part of my hands-on IT and networking experience.
+
+
+- **Microsoft 365 Help Desk Lab** — Simulated Tier 1 IT support environment focused on Microsoft 365 and Entra ID user provisioning, licensing, MFA troubleshooting, and common service desk tickets.  
+  [View Project](./Microsoft-365-Helpdesk-Lab/README.md)
+
+
 
 - **Active Directory Setup** — Building a Windows Server 2022 domain, users, OU structure, DNS, DHCP, and core Group Policy.  
   [View Project](./ActiveDirectoryLab/README.md)
@@ -16,17 +25,6 @@ This repository is organized into four main sections, each documenting a differe
     [View Project](./ActiveDirectoryUserAccessAdmin/README.md)
 
 
-- **Networking Lab**  
-  IP addressing, routing, DHCP, DNS, NAT, VLANs, and troubleshooting fundamentals.  
-  [View Project](./Networking/README.md)
-
-- **Azure Lab**  
-  Identity management, virtual machines, networking, and cloud resource administration.  
-  [View Project](./Azure/README.md)
-
-- **Security Lab**  
-  Hardening, auditing, update management, and vulnerability remediation.  
-  [View Project](./Security/README.md)
 
 ## Certifications
 
