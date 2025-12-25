@@ -32,7 +32,8 @@ Here are my IT certifications, verified through Credly and Microsoft:
 
 - [CompTIA Security+](https://www.credly.com/badges/d89c7144-279d-4689-b175-23dd8e4b53d8/public_url)
 - [Microsoft Azure Fundamentals (AZ-900)](https://learn.microsoft.com/api/credentials/share/en-us/MelvinWilliams-2022/9BF8F9D963B6FCA9?sharingId=49A91F7AAEFFECF3)
-- Currently studying for: Cisco Certified Network Associate (CCNA)
+- Cisco Certified Network Associate (CCNA) — In Progress
+
 
 ## Skills
 
