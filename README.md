@@ -12,7 +12,7 @@ This repository is organized into four main sections, each documenting a differe
 
 
 - **Microsoft 365 Help Desk Lab** — Simulated Tier 1 IT support environment focused on Microsoft 365 and Entra ID user provisioning, licensing, MFA troubleshooting, and common service desk tickets.  
-  [View Project](./Microsoft-365-Helpdesk-Lab/README.md)
+  [View Project](./Microsoft-365-Helpdesk-Lab/README_Temp.md)
 
 
 
