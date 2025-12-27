@@ -1,18 +1,33 @@
-# Microsoft 365 Lab - Step 1: Tenant and User Setup
+# Microsoft 365 Lab
 
-This lab documents the setup of a Microsoft 365 environment for hands-on learning. The goal is to create a clean tenant, configure users, teams, SharePoint sites, and prepare folder structures to simulate collaboration, permissions, and IT administration workflows.
+This lab documents the setup and administration of a Microsoft 365 environment for hands-on learning. The goal is to simulate real-world collaboration, permissions, security, and troubleshooting workflows to prepare for helpdesk or sysadmin roles.
 
 ---
 
-## Lab Tenant Setup
+## Table of Contents
+
+| Step | Title | Description |
+| --- | --- | --- |
+| [Step 1](#step-1-tenant-and-user-setup) | Tenant and User Setup | Create a clean tenant, configure users, Teams, SharePoint sites, folders, and permissions. |
+| [Step 2](#step-2-mailbox-and-onedrive-setup) | Mailbox and OneDrive Setup | Assign mailboxes, configure OneDrive, upload sample files, and configure sharing. |
+| [Step 3](#step-3-security-and-compliance) | Security and Compliance | Configure MFA, conditional access, DLP policies, sensitivity labels, and test access. |
+| [Step 4](#step-4-groups-and-roles) | Groups and Roles | Create security groups, Microsoft 365 groups, and role-based access with proper permissions. |
+| [Step 5](#step-5-collaboration-labs) | Collaboration Labs | Simulate Teams, SharePoint, and OneDrive collaboration scenarios. |
+| [Step 6](#step-6-end-user-troubleshooting) | End-User Troubleshooting | Simulate mailbox, OneDrive, and permissions issues and document troubleshooting steps. |
+
+---
+
+## Step 1: Tenant and User Setup
+
+This step documents the initial Microsoft 365 tenant configuration including users, Teams, SharePoint sites, and folder permissions.
+
+### Lab Tenant Setup
 
 - Tenant Domain: [Melvin79m.onmicrosoft.com](http://melvin79m.onmicrosoft.com/)  
 - Global Admin Account: [MelvinWilliams@Melvin79m.onmicrosoft.com](mailto:MelvinWilliams@Melvin79m.onmicrosoft.com)  
 - Subscription: Microsoft 365 Business Premium Trial (1 month, 10 users)  
 
----
-
-## Users Created
+### Users Created
 
 | Display Name | Username | License |
 | --- | --- | --- |
@@ -30,11 +45,7 @@ This lab documents the setup of a Microsoft 365 environment for hands-on learnin
 
 Note: All users had passwords set and are required to change them at first login.
 
----
-
-## Teams Setup
-
-Three Teams were created corresponding to departments:
+### Teams Setup
 
 | Team Name | Members | Channels |
 | --- | --- | --- |
@@ -42,11 +53,7 @@ Three Teams were created corresponding to departments:
 | Sales Department | 4 | General, Opportunities, Sales Reports, Training, Announcements |
 | HR Department | 9 | General, Policies & Procedures, Recruitment, Employee Onboarding, Announcements |
 
----
-
-## SharePoint Sites Setup
-
-Each department has a dedicated SharePoint Team site linked to their Teams group:
+### SharePoint Sites Setup
 
 | Site Name | Linked Team | Privacy |
 | --- | --- | --- |
@@ -54,50 +61,30 @@ Each department has a dedicated SharePoint Team site linked to their Teams group
 | Sales Department Site | Sales Department | Private |
 | HR Department Site | HR Department | Private |
 
-Template Used: Standard team template from Microsoft to provide default document libraries and pages.
+Template Used: Standard team template from Microsoft.
 
----
-
-## SharePoint Folder Structure & Permissions
-
-Folders were created in each department site to simulate real-world document organization. Permissions were customized to demonstrate least privilege and secure collaboration.
-
-### IT Department Site
+### SharePoint Folder Structure & Permissions
 
 | Folder | Description | Permissions | Notes |
 | --- | --- | --- | --- |
-| Projects | Contains IT projects with subfolders: Network_Upgrade, Onboarding_Automation, Security_Audit | Inherited from library: Owners=Full Control, Members=Edit | Placeholder files added to each subfolder. Screenshots captured. |
-| Policies | Contains company policies | Custom: Owners=Full Control, Members=Edit | Non-IT read access documented as intent. Inheritance broken. |
-| Support Tickets | IT service tickets | Custom: Owners=Full Control, Members=Edit | Restricted to IT only. Demonstrates sensitive data handling. |
-| Training | IT training materials | Custom: Owners=Full Control, Members=Edit | Non-IT read access documented as intent. Inheritance broken. |
+| Projects | Contains IT projects with subfolders: Network_Upgrade, Onboarding_Automation, Security_Audit | Inherited from library: Owners=Full Control, Members=Edit | Placeholder files added to each subfolder |
+| Policies | Company policies | Custom: Owners=Full Control, Members=Edit | Non-IT read access documented |
+| Support Tickets | IT service tickets | Custom: Owners=Full Control, Members=Edit | Restricted to IT only |
+| Training | IT training materials | Custom: Owners=Full Control, Members=Edit | Non-IT read access documented |
 
-Note: Due to Microsoft 365 trial tenant limitations, non-IT users could not be added to read-only groups. In a production environment, these groups would exist to enforce least privilege.
-
----
+Note: Due to Microsoft 365 trial tenant limitations, non-IT users could not be added to read-only groups.
 
 ### Projects Subfolders Example
 
 | Subfolder | Placeholder Files | Permissions |
 | --- | --- | --- |
-| Network_Upgrade | `README.md`, `Network_Upgrade_Plan.docx` | Inherited from library |
-| Onboarding_Automation | `README.md`, `Automation_Script.docx` | Inherited from library |
-| Security_Audit | `README.md`, `Audit_Report.xlsx` | Inherited from library |
-
----
-
-## Documentation & Screenshots
-
-For each folder and subfolder:
-
-1. Screenshot folder structure  
-2. Screenshot Advanced Permissions table showing Owners & Members  
-3. Optional: Screenshot Check Permissions for sample IT user  
-
-Screenshots are located in `O365Lab/` and will render inline automatically.
-
----
+| Network_Upgrade | README.md, Network_Upgrade_Plan.docx | Inherited from library |
+| Onboarding_Automation | README.md, Automation_Script.docx | Inherited from library |
+| Security_Audit | README.md, Audit_Report.xlsx | Inherited from library |
 
 ### Screenshot Evidence – Step 1
+
+Screenshots are located in `O365Lab/` and will render inline automatically.
 
 #### Tenant & Admin Configuration
 ![Microsoft 365 Admin Dashboard](O365Lab/Microsoft_365_admin_dashboard_1.png)
@@ -127,14 +114,45 @@ Screenshots are located in `O365Lab/` and will render inline automatically.
 
 ---
 
+## Step 2: Mailbox and OneDrive Setup
+
+*(To be added – screenshots and documentation)*
+
+---
+
+## Step 3: Security and Compliance
+
+*(To be added – screenshots and documentation)*
+
+---
+
+## Step 4: Groups and Roles
+
+*(To be added – screenshots and documentation)*
+
+---
+
+## Step 5: Collaboration Labs
+
+*(To be added – screenshots and documentation)*
+
+---
+
+## Step 6: End-User Troubleshooting
+
+*(To be added – screenshots and documentation)*
+
+---
+
 ## Outcome
 
-At the completion of Step 1:
+At the completion of all steps, this lab demonstrates:
 
-- A clean Microsoft 365 tenant with fully configured users  
-- Teams with department-based channels  
-- SharePoint sites linked to Teams  
-- Document library folders with permissions demonstrating least privilege and secure collaboration  
-- Placeholder files in Projects subfolders for tangible evidence  
+- Microsoft 365 tenant setup and user management  
+- Teams and SharePoint site configuration  
+- Folder structure, permissions, and least privilege implementation  
+- Mailbox and OneDrive setup for end-user workflows  
+- Security policies, groups, and role management  
+- Troubleshooting end-user issues and collaboration scenarios  
 
-This lab provides a foundation for demonstrating Microsoft 365 administration, file sharing, and collaboration workflows in a professional GitHub repository.
+This lab provides a **complete hands-on portfolio project** suitable for GitHub and resume demonstration.
