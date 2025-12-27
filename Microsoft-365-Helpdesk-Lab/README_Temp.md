@@ -6,9 +6,9 @@ This lab documents the setup of a Microsoft 365 environment for hands-on learnin
 
 ## Lab Tenant Setup
 
-- **Tenant Domain:** [Melvin79m.onmicrosoft.com](http://melvin79m.onmicrosoft.com/)  
-- **Global Admin Account:** [MelvinWilliams@Melvin79m.onmicrosoft.com](mailto:MelvinWilliams@Melvin79m.onmicrosoft.com)  
-- **Subscription:** Microsoft 365 Business Premium Trial (1 month, 10 users)  
+- Tenant Domain: [Melvin79m.onmicrosoft.com](http://melvin79m.onmicrosoft.com/)  
+- Global Admin Account: [MelvinWilliams@Melvin79m.onmicrosoft.com](mailto:MelvinWilliams@Melvin79m.onmicrosoft.com)  
+- Subscription: Microsoft 365 Business Premium Trial (1 month, 10 users)  
 
 ---
 
@@ -28,7 +28,7 @@ This lab documents the setup of a Microsoft 365 environment for hands-on learnin
 | Jack Walker | [JackW@Melvin79m.onmicrosoft.com](mailto:JackW@Melvin79m.onmicrosoft.com) | Microsoft 365 Business Premium |
 | Melvin Williams | [MelvinWilliams@Melvin79m.onmicrosoft.com](mailto:MelvinWilliams@Melvin79m.onmicrosoft.com) | Microsoft 365 Business Premium |
 
-**Note:** All users had passwords set and are required to change them at first login.
+Note: All users had passwords set and are required to change them at first login.
 
 ---
 
@@ -54,13 +54,13 @@ Each department has a dedicated SharePoint Team site linked to their Teams group
 | Sales Department Site | Sales Department | Private |
 | HR Department Site | HR Department | Private |
 
-**Template Used:** Standard team template from Microsoft to provide default document libraries and pages.
+Template Used: Standard team template from Microsoft to provide default document libraries and pages.
 
 ---
 
 ## SharePoint Folder Structure & Permissions
 
-Folders were created in each department site to simulate real-world document organization. Permissions were customized to demonstrate **least privilege** and secure collaboration.
+Folders were created in each department site to simulate real-world document organization. Permissions were customized to demonstrate least privilege and secure collaboration.
 
 ### IT Department Site
 
@@ -71,7 +71,7 @@ Folders were created in each department site to simulate real-world document org
 | Support Tickets | IT service tickets | Custom: Owners=Full Control, Members=Edit | Restricted to IT only. Demonstrates sensitive data handling. |
 | Training | IT training materials | Custom: Owners=Full Control, Members=Edit | Non-IT read access documented as intent. Inheritance broken. |
 
-> **Note:** Due to Microsoft 365 trial tenant limitations, non-IT users could not be added to read-only groups. In a production environment, these groups would exist to enforce least privilege.
+Note: Due to Microsoft 365 trial tenant limitations, non-IT users could not be added to read-only groups. In a production environment, these groups would exist to enforce least privilege.
 
 ---
 
@@ -89,11 +89,41 @@ Folders were created in each department site to simulate real-world document org
 
 For each folder and subfolder:
 
-1. Screenshot **folder structure**  
-2. Screenshot **Advanced Permissions table** showing Owners & Members  
-3. Optional: Screenshot **Check Permissions** for sample IT user  
+1. Screenshot folder structure  
+2. Screenshot Advanced Permissions table showing Owners & Members  
+3. Optional: Screenshot Check Permissions for sample IT user  
 
-These screenshots are organized under `/Screenshots` in the GitHub repo.
+Screenshots are located in `O365Lab/` and will render inline automatically.
+
+---
+
+### Screenshot Evidence – Step 1
+
+#### Tenant & Admin Configuration
+![Microsoft 365 Admin Dashboard](O365Lab/Microsoft_365_admin_dashboard_1.png)
+![Password Reset](O365Lab/Password_rest_2.png)
+
+#### Microsoft Teams Configuration
+![Teams Dashboard with Channels](O365Lab/Teams_dashboard_with_Team_channels_3.png)
+
+#### SharePoint Site Structure
+![Site Dashboard](O365Lab/Site_Dashboard_4.png)
+![IT Department SharePoint](O365Lab/ITDepartment_SharePoint_5.png)
+![Projects Library](O365Lab/ITDepartment_Projects_6.png)
+
+#### Project Folder Organization
+![Network Upgrade Project](O365Lab/ITDepartment_Projects_Documents_networkupgrade_7.png)
+![Onboarding Automation Project](O365Lab/ITDepartment_Projects_Documents_OnboardingAutomation_8.png)
+![Security Audits Project](O365Lab/ITDepartment_Projects_Documents_SecurityAudits_9.png)
+
+#### SharePoint Permissions & Access Control
+![Permissions Overview](O365Lab/SharePoint_Permissions_ITDepartment_10.png)
+![Network Upgrade Access](O365Lab/ITDepartment_SharePoint_ManageAccess_NetworkUpgrades_11.png)
+![Onboarding Automation Access](O365Lab/ITDepartment_SharePoint_ManageAcess_OnboardingAutomation_12.png)
+![Security Audits Access](O365Lab/ITDepartment_SharePoint_ManageAcess_SecurityAudits_13.png)
+![Policies Access 1](O365Lab/ITDepartment_SharePoint_ManageAcess_Policies_14.png)
+![Policies Access 2](O365Lab/ITDepartment_SharePoint_ManageAcess_Policies_15.png)
+![Support Tickets Access](O365Lab/ITDepartment_SharePoint_ManageAcess_SupportTickets_16.png)
 
 ---
 
@@ -107,7 +137,4 @@ At the completion of Step 1:
 - Document library folders with permissions demonstrating least privilege and secure collaboration  
 - Placeholder files in Projects subfolders for tangible evidence  
 
-This lab provides a **foundation for demonstrating Microsoft 365 administration, file sharing, and collaboration workflows** in a professional GitHub repository.
-
----
-
+This lab provides a foundation for demonstrating Microsoft 365 administration, file sharing, and collaboration workflows in a professional GitHub repository.
