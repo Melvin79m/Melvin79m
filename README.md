@@ -11,6 +11,10 @@ My long-term goal is network engineering, but my current focus is building stron
 This repository is organized into four main sections, each documenting a different part of my hands-on IT and networking experience.
 
 
+* **Custom PC Build Project** — Complete hardware workstation build from component selection through assembly, BIOS configuration, dual-boot Windows 11/Ubuntu setup, hardware diagnostics, and troubleshooting methodology.  
+  [View Project](https://github.com/Melvin79m/My-PC-Build)
+  
+
 - **Microsoft 365 Help Desk Lab** — Simulated Tier 1 IT support environment focused on Microsoft 365 and Entra ID user provisioning, licensing, MFA troubleshooting, and common service desk tickets.  
   [View Project](./Microsoft-365-Helpdesk-Lab/README_Temp.md)
 
