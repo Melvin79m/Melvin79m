@@ -114,9 +114,52 @@ Screenshots are located in `O365Lab/` and will render inline automatically.
 
 ---
 
+
+
 ## Step 2: Mailbox and OneDrive Setup
 
-*(To be added – screenshots and documentation)*
+This step documents assigning mailboxes, configuring OneDrive for users, uploading sample files, and setting sharing permissions.
+
+### Mailbox Configuration
+
+All users were assigned Microsoft 365 mailboxes with default settings. Example accounts were tested to verify access.
+
+| User | Mailbox Type | Status | Notes |
+| --- | --- | --- | --- |
+| Alice Smith | User Mailbox | Active | Sent/received test emails |
+| Bob Johnson | User Mailbox | Active | Verified admin permissions |
+| Carol Davis | User Mailbox | Active | Verified email routing |
+
+#### Screenshot Evidence – Mailboxes
+![User Mailboxes](O365Lab/User_Mailboxes_2.png)
+![Test Email](O365Lab/Test_Email_3.png)
+
+---
+
+### OneDrive Setup
+
+OneDrive was configured for each user. Files were uploaded to simulate real-world collaboration, and sharing permissions were tested.
+
+| User | Action | Notes | Screenshot |
+| --- | --- | --- | --- |
+| Alice Smith | Upload sample files | Verified user access | ![Step2_Alice_OneDriveAccess](O365Lab/Step2_Alice_OneDriveAccess.png) |
+| Bob Johnson | Admin view of OneDrive | Verified sharing and folder permissions | ![Step2_BobOneDrive_AdminView](O365Lab/Step2_BobOneDrive_AdminView.png) |
+| Bob Johnson | Shared folder with Alice | Confirmed read/write permissions | ![Step2_BobOneDrive_Sharing](O365Lab/Step2_BobOneDrive_Sharing.png) |
+| Bob Johnson | OneDrive Admin Overview | Confirmed OneDrive setup | ![BobJohnson_OneDrive_Admin](O365Lab/BobJohnson_OneDrive_Admin.png) |
+| OneDrive File Upload | Sample file upload | Confirmed file available | ![OneDrive_File_Upload_](O365Lab/OneDrive_File_Upload_.png) |
+| Teams | Dashboard with Team channels | Verified channel file access | ![Teams_dashboard_with_Team_channels_3](O365Lab/Teams_dashboard_with_Team_channels_3.png) |
+
+---
+
+### Outcome – Step 2
+
+After completing this step:
+
+- All user mailboxes are active and tested for sending/receiving emails.  
+- OneDrive accounts are configured and linked to Teams channels.  
+- Sharing permissions are verified for both individual users and Teams channels.  
+- Admin views confirm correct access controls and auditing is possible for all shared files.
+
 
 ---
 
