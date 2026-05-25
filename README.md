@@ -11,12 +11,12 @@ My long-term goal is network engineering, but my current focus is building stron
 
 This repository is organized into distinct sections documenting my hands-on IT, system administration, and networking experience.
 
-### 🌟 Featured Project (Current Lab)
+### Featured Project (Current Lab)
 
 * **New Active Directory Help Desk Lab (Proxmox VE)** — My current, primary lab environment built on an enterprise hypervisor. Focused on Windows Server 2022 core infrastructure foundation, realistic 20-user departmental provisioning, Role-Based Access Control (RBAC), delegated local workstation administration, and Help Desk tier-1/tier-2 operational verification.
   [View Project](./NewActiveDirectoryLab/README.md)
 
-### 💻 System & Cloud Administration
+### System & Cloud Administration
 
 * **Microsoft 365 Help Desk Lab** — Simulated Tier 1 IT support environment focused on Microsoft 365 and Entra ID user provisioning, licensing, MFA troubleshooting, and common service desk tickets.  
   [View Project](./Microsoft-365-Helpdesk-Lab/README_Temp.md)
@@ -24,7 +24,7 @@ This repository is organized into distinct sections documenting my hands-on IT, 
 * **Custom PC Build Project** — Complete hardware workstation build from component selection through assembly, BIOS configuration, dual-boot Windows 11/Ubuntu setup, hardware diagnostics, and troubleshooting methodology.  
   [View Project](https://github.com/Melvin79m/My-PC-Build)
 
-### 📦 Legacy & Archival Projects
+### Legacy & Archival Projects
 
 > **Project Evolution Note:** The projects below represent the earlier iterations of my Active Directory testing. I keep them archived here to preserve my learning history and document my progression from basic setup to my current Proxmox enterprise-style deployment.
 
