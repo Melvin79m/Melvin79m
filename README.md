@@ -5,30 +5,36 @@ I’m an entry-level IT Support professional with hands-on experience supporting
 
 My long-term goal is network engineering, but my current focus is building strong fundamentals in IT support, identity, and networking by creating realistic environments, intentionally breaking things, fixing them, and documenting the process clearly.
 
+---
 
 ## Projects
 
-This repository is organized into four main sections, each documenting a different part of my hands-on IT and networking experience.
+This repository is organized into distinct sections documenting my hands-on IT, system administration, and networking experience.
 
+### 🌟 Featured Project (Current Lab)
+
+* **New Active Directory Help Desk Lab (Proxmox VE)** — My current, primary lab environment built on an enterprise hypervisor. Focused on Windows Server 2022 core infrastructure foundation, realistic 20-user departmental provisioning, Role-Based Access Control (RBAC), delegated local workstation administration, and Help Desk tier-1/tier-2 operational verification.
+  [View Project](./NewActiveDirectoryLab/README.md)
+
+### 💻 System & Cloud Administration
+
+* **Microsoft 365 Help Desk Lab** — Simulated Tier 1 IT support environment focused on Microsoft 365 and Entra ID user provisioning, licensing, MFA troubleshooting, and common service desk tickets.  
+  [View Project](./Microsoft-365-Helpdesk-Lab/README_Temp.md)
 
 * **Custom PC Build Project** — Complete hardware workstation build from component selection through assembly, BIOS configuration, dual-boot Windows 11/Ubuntu setup, hardware diagnostics, and troubleshooting methodology.  
   [View Project](https://github.com/Melvin79m/My-PC-Build)
-  
 
-- **Microsoft 365 Help Desk Lab** — Simulated Tier 1 IT support environment focused on Microsoft 365 and Entra ID user provisioning, licensing, MFA troubleshooting, and common service desk tickets.  
-  [View Project](./Microsoft-365-Helpdesk-Lab/README_Temp.md)
+### 📦 Legacy & Archival Projects
 
+> **Project Evolution Note:** The projects below represent the earlier iterations of my Active Directory testing. I keep them archived here to preserve my learning history and document my progression from basic setup to my current Proxmox enterprise-style deployment.
 
-
-- **Active Directory Setup** — Building a Windows Server 2022 domain, users, OU structure, DNS, DHCP, and core Group Policy.  
+* **Active Directory Setup (v1)** — Initial exploration into building a Windows Server 2022 domain, managing core users, OU structures, DNS, DHCP, and baseline Group Policy.  
   [View Project](./ActiveDirectoryLab/README.md)
 
+* **Active Directory User & Access Administration (v1)** — Large-scale environment testing focusing on complex enterprise-style workflows, multi-floor/shift layouts, and advanced access configurations.  
+  [View Project](./ActiveDirectoryUserAccessAdmin/README.md)
 
-
-  - **Active Directory User & Access Administration Project** — Managing users, groups, permissions, roles, OU structure, department layouts, floors/shifts, GPOs, and real-world sysadmin workflows in a full enterprise-style environment.  
-    [View Project](./ActiveDirectoryUserAccessAdmin/README.md)
-
-
+---
 
 ## Certifications
 
@@ -38,16 +44,18 @@ Here are my IT certifications, verified through Credly and Microsoft:
 - [Microsoft Azure Fundamentals (AZ-900)](https://learn.microsoft.com/api/credentials/share/en-us/MelvinWilliams-2022/9BF8F9D963B6FCA9?sharingId=49A91F7AAEFFECF3)
 - Cisco Certified Network Associate (CCNA) — In Progress
 
+---
 
 ## Skills
 
-- IT Support: User account management, access control, authentication troubleshooting, remote support
-- Windows Server 2022, Active Directory, Group Policy
-- Microsoft 365 & Entra ID (User provisioning, licensing, MFA)
-- Windows 11, Linux (Ubuntu)
-- Networking: IPv4, Subnetting, DHCP, DNS, VLANs
-- Security fundamentals: Account lockout policies, least privilege, vulnerability remediation
+- **IT Support:** User account management, access control, authentication troubleshooting, remote support
+- **Windows Server 2022:** Active Directory Users & Computers (ADUC), Group Policy Objects (GPOs), RBAC
+- **Cloud Identity:** Microsoft 365 & Entra ID (User provisioning, licensing, MFA)
+- **Operating Systems:** Windows 11, Linux (Ubuntu)
+- **Networking:** IPv4, Subnetting, DHCP, DNS, VLANs
+- **Security Fundamentals:** Account lockout policies, principle of least privilege, access control list validation
 
+---
 
 ## Contact
 
