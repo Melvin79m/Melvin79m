@@ -1,7 +1,7 @@
 ## Hi, I'm Melvin Williams
 Entry-Level IT Support & Service Desk Technician
 
-I’m an entry-level IT Support professional with hands-on experience supporting Windows, Active Directory, and Microsoft 365 environments through structured home labs that mirror real-world help desk workflows. I focus on user support, authentication issues, access management, and troubleshooting common Tier 1 problems.
+I'm an entry-level IT Support professional with hands-on experience supporting Windows, Active Directory, and Microsoft 365 environments through structured home labs that mirror real-world help desk workflows. I focus on user support, authentication issues, access management, and troubleshooting common Tier 1 problems.
 
 My long-term goal is network engineering, but my current focus is building strong fundamentals in IT support, identity, and networking by creating realistic environments, intentionally breaking things, fixing them, and documenting the process clearly.
 
@@ -19,7 +19,7 @@ This repository is organized into distinct sections documenting my hands-on IT, 
 ### System & Cloud Administration
 
 * **Microsoft 365 Help Desk Lab** — Simulated Tier 1 IT support environment focused on Microsoft 365 and Entra ID user provisioning, licensing, MFA troubleshooting, and common service desk tickets.  
-  [View Project](./Microsoft-365-Helpdesk-Lab/README_Temp.md)
+  [View Project](./Microsoft-365-Helpdesk-Lab/README.md)
 
 * **Custom PC Build Project** — Complete hardware workstation build from component selection through assembly, BIOS configuration, dual-boot Windows 11/Ubuntu setup, hardware diagnostics, and troubleshooting methodology.  
   [View Project](https://github.com/Melvin79m/My-PC-Build)
