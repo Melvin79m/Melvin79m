@@ -18,6 +18,9 @@ This repository is organized into distinct sections documenting my hands-on IT, 
 
 ### System & Cloud Administration
 
+* **Spiceworks Help Desk Lab** — 10 simulated help desk tickets worked end-to-end covering account lockouts, hardware failures, network access issues, software crashes, and new hire onboarding.  
+  [View Project](./SpiceworksHelpDeskLab/README.md)
+
 * **Microsoft 365 Help Desk Lab** — Simulated Tier 1 IT support environment focused on Microsoft 365 and Entra ID user provisioning, licensing, MFA troubleshooting, and common service desk tickets.  
   [View Project](./Microsoft-365-Helpdesk-Lab/README.md)
 
