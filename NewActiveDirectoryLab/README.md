@@ -164,16 +164,15 @@ This setup mirrors exactly how permissions are managed in enterprise environment
 ---
 
 ### Phase 5: Step 3 – GPO Drive Mapping & Automated Network Share Deployment
-
 With shares secured at the NTFS level, the final step was eliminating manual drive mapping entirely. In an enterprise environment, users should never have to map their own drives — the infrastructure handles it automatically at login.
 
-I created a new Group Policy Object called **Dept Drive Mapping** and linked it to the MelvinLab_users OU so it applies to all domain users. Inside the GPO, I navigated to User Configuration → Preferences → Windows Settings → Drive Maps and created five separate drive mapping entries — one per department share and one for Public.
+I created a new Group Policy Object called Dept Drive Mapping and linked it to the MelvinLab_users OU so it applies to all domain users. Inside the GPO, I navigated to User Configuration → Preferences → Windows Settings → Drive Maps and created five separate drive mapping entries — one per department share and one for Public.
 
-For each department share (IT, HR, Finance, Marketing), I configured the action as Create, pointed the location to the corresponding UNC path on MEL-DC-01, and assigned drive letter **H:**. The key to making this work without conflict is **Item-Level Targeting** — each mapping is filtered to its specific security group. An IT user gets `\\MEL-DC-01\IT` on H:, an HR user gets `\\MEL-DC-01\HR` on H:, and so on. Because only one mapping ever applies per user, there is no collision on the drive letter.
+For each department share (IT, HR, Finance, Marketing), I configured the action as Create, pointed the location to the corresponding UNC path on MEL-DC-01, and assigned drive letter H:. The key to making this work without conflict is Item-Level Targeting — each mapping is filtered to its specific security group. An IT user gets the IT share on H:, an HR user gets the HR share on H:, and so on. Because only one mapping ever applies per user, there is no collision on the drive letter.
 
-The Public share was handled differently. Since every domain user belongs to Domain Users by default, no targeting was needed — but it required a different drive letter. I assigned it **Z:** to avoid conflicting with the department H: mapping that every user also receives. I also enabled **"Run in logged-on user's security context"** on the Common tab for all five entries, which ensures the mapping executes under the user's own credentials rather than the computer account.
+The Public share was handled differently. Since every domain user belongs to Domain Users by default, no targeting was needed — but it required a different drive letter. I assigned it Z: to avoid conflicting with the department H: mapping that every user also receives. I also enabled Run in logged-on user's security context on the Common tab for all five entries, which ensures the mapping executes under the user's own credentials rather than the computer account.
 
-After running `gpupdate /force` on MEL-CL-01 and signing out and back in, both mapped drives appeared automatically in File Explorer — H: for the user's department share and Z: for Public — with no manual configuration required on the client side.
+After running gpupdate /force on MEL-CL-01 and signing out and back in, both mapped drives appeared automatically in File Explorer — H: for the user's department share and Z: for Public — with no manual configuration required on the client side.
 
 **Screenshots:**
 
