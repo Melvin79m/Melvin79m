@@ -65,9 +65,9 @@ The primary objective of this phase was to integrate the Windows 11 workstation 
 
 **Screenshots:**
 
-`Lab.6` – The "Welcome to the Domain" popup *(screenshot coming soon)*
+![Lab.6 – Computer Name/Domain Changes dialog joining MEL-CL-01 to melvinlab.local](./screenshots/Lab.6.png)
 
-`Lab.7` – MEL-CL-01 visible in Active Directory Users and Computers *(screenshot coming soon)*
+![Lab.7 – MEL-CL-01 visible in Active Directory Users and Computers](./screenshots/Lab.7.png)
 
 ---
 
@@ -78,7 +78,7 @@ With the core domain infrastructure established, I moved into the design and imp
 
 **Screenshot:**
 
-`Lab.8` – ADUC sidebar showing the MelvinLab_users nested tree *(screenshot coming soon)*
+![Lab.8 – ADUC sidebar showing the MelvinLab_users nested tree](./screenshots/Lab.8.png)
 
 ---
 
@@ -87,7 +87,7 @@ To build muscle memory for common Service Desk tasks, I manually provisioned 20 
 
 **Screenshot:**
 
-`Lab.9` – Properties of a user showing populated Department and Job Title fields *(screenshot coming soon)*
+![Lab.9 – Properties of a user showing populated Department and Job Title fields](./screenshots/Lab.9.png)
 
 ---
 
@@ -96,7 +96,7 @@ The final step of this phase involved the creation of dedicated administrative i
 
 **Screenshot:**
 
-`Lab.10` – The "Member Of" tab for ThomasA showing Domain Admins membership *(screenshot coming soon)*
+![Lab.10 – The "Member Of" tab for ThomasA showing Domain Admins membership](./screenshots/Lab.10.png)
 
 ---
 
@@ -107,7 +107,7 @@ To transition from individual account management to Role-Based Access Control (R
 
 **Screenshot:**
 
-`Lab.11` – The Members tab of GS_IT_Staff showing the IT users *(screenshot coming soon)*
+![Lab.11 – The Members tab of GS_IT_Staff showing the IT users](./screenshots/Lab.11.png)
 
 ---
 
@@ -116,7 +116,7 @@ I practiced the principle of least privilege by delegating local administrative 
 
 **Screenshot:**
 
-`Lab.12` – The Local Administrators group properties on MEL-CL-01 showing GS_IT_Staff as a member *(screenshot coming soon)*
+![Lab.12 – The Local Administrators group properties on MEL-CL-01 showing GS_IT_Staff as a member](./screenshots/Lab.12.png)
 
 ---
 
@@ -125,7 +125,7 @@ To confirm that the domain-level permissions were correctly inherited by the cli
 
 **Screenshot:**
 
-`Lab.13` – The Command Prompt output showing the active group memberships *(screenshot coming soon)*
+![Lab.13 – The Command Prompt output showing the active group memberships](./screenshots/Lab.13.png)
 
 ---
 
