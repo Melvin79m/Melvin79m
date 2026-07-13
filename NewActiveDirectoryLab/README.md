@@ -11,6 +11,7 @@
 - [Phase 3: Organizational Hierarchy & User Provisioning](#phase-3-organizational-hierarchy--user-provisioning)
 - [Phase 4: Service Desk Operations & Access Control](#phase-4-service-desk-operations--access-control)
 - [Phase 5: Corporate Shared Resources & Data Governance](#phase-5-corporate-shared-resources--data-governance)
+- [Phase 6: Infrastructure Maintenance & Data Protection](#phase-6-infrastructure-maintenance--data-protection)
 
 ---
 
@@ -181,3 +182,28 @@ After running gpupdate /force on MEL-CL-01 and signing out and back in, both map
 ![Lab.18 – Item-Level Targeting editor showing GS_IT_Staff security group filter on the IT drive mapping](./screenshots/Lab.18.png)
 
 ![Lab.19 – MEL-CL-01 File Explorer showing H: IT Department and Z: Public automatically mapped at login](./screenshots/Lab.19.png)
+
+---
+
+## Phase 6: Infrastructure Maintenance & Data Protection
+
+### Phase 6: Step 1 – Windows Server Backup & Dedicated Backup Storage
+With identity, access control, and file services all in place, the next priority was making sure none of it could be lost. A domain controller holds the entire directory database, and losing it without a recovery path means rebuilding the whole environment from scratch. This step focused on standing up a real backup solution rather than treating it as an afterthought.
+
+Windows Server Backup isn't installed by default, so I added it through Server Manager under Add Roles and Features. It's a lightweight, built-in tool capable of full bare-metal backups as well as targeted system state backups — no third-party software required for a lab environment like this.
+
+Before running a backup, I needed a destination that wasn't the volume being backed up — Windows Server Backup won't let you back a drive up to itself, and even if it did, that defeats the purpose of a backup. I added a second virtual disk to MEL-DC-01 through Proxmox, then initialized it in Disk Management (GPT partition style), created a new simple volume on it, and formatted it NTFS. Since the VM's virtual CD-ROM drives had already claimed D: and E:, I assigned the new volume F: and labeled it "Backups."
+
+With the destination ready, I ran a Backup Once job configured for Full Server, which captures every volume on the machine plus system state — the piece that actually matters most for a DC, since system state includes the AD database (NTDS.dit), SYSVOL, and the registry. Full server backup was the right choice over a custom/partial backup here: on a single-server lab DC, the whole machine is small enough that there's no real cost to backing up everything, and it means a full bare-metal restore is possible later if the entire VM were lost, not just individual files.
+
+The backup completed successfully with no errors, confirming both that the tool is working correctly and that the dedicated backup volume is a valid, usable destination going forward — this is also the foundation for setting up a recurring backup schedule next.
+
+**Screenshots:**
+
+![Lab.20 – Disk Management showing Disk 1 initialized and formatted as Backups (F:), 24.98 GB NTFS](./screenshots/Lab.20.png)
+
+![Lab.21 – Backup Once Wizard progress screen showing Status: Completed, with EFI System Partition, Local disk (C:), System state, and Bare metal recovery all completed to F:](./screenshots/Lab.21.png)
+
+![Lab.22 – Windows Server Backup Local Backup dashboard confirming Last Backup status: Successful](./screenshots/Lab.22.png)
+
+---
