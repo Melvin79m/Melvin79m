@@ -218,3 +218,18 @@ One thing worth noting: the Recycle Bin is a one-way switch. Once enabled, it ca
 **Screenshot:**
 
 ![Lab.23 – Active Directory Administrative Center showing the Deleted Objects container confirming the AD Recycle Bin is enabled on MELVINLAB (local)](./screenshots/Lab.23.png)
+
+---
+
+### Phase 6: Step 3 – Volume Shadow Copies
+With backups and the Recycle Bin covering catastrophic and accidental deletion scenarios, the final piece of Phase 6 was enabling Volume Shadow Copies on the C: drive — specifically to support self-service file restoration for users working out of DeptShares. The difference between this and a backup restore is friction: a backup restore requires admin intervention, downtime, and pulling files from a separate system. Shadow Copies put that power directly in the user's hands through the Previous Versions tab in File Explorer.
+
+I enabled Shadow Copies through the C: drive's Properties dialog and took an initial manual snapshot to establish the baseline. To verify the feature was working end to end, I created a test file inside the DeptShares\Marketing folder, took a second snapshot to capture it, then deleted the file. From the Marketing folder's Previous Versions tab, the snapshot appeared immediately — opening it revealed the deleted file exactly as it was. Dragging it back to the live folder restored it completely, with no admin involvement required.
+
+This is a realistic workflow for a corporate environment. A user accidentally overwrites or deletes a document and calls the help desk. Instead of escalating to a restore from backup, the technician can walk them through Previous Versions and have the file recovered in under a minute. The shadow copy infrastructure runs silently in the background and makes that possible at no additional cost.
+
+**Screenshots:**
+
+![Lab.24 – Marketing folder Previous Versions tab showing the available shadow copy snapshot with the test file visible for restore](./screenshots/Lab.24.png)
+
+![Lab.25 – C: drive Shadow Copies tab showing two snapshots enabled and listed with timestamps confirming Volume Shadow Copy Service is active](./screenshots/Lab.25.png)
