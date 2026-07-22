@@ -207,3 +207,14 @@ The backup completed successfully with no errors, confirming both that the tool 
 ![Lab.22 – Windows Server Backup Local Backup dashboard confirming Last Backup status: Successful](./screenshots/Lab.22.png)
 
 ---
+
+### Phase 6: Step 2 – Active Directory Recycle Bin
+With a backup solution in place, I turned to the next layer of fault tolerance — enabling the Active Directory Recycle Bin. Backups protect against catastrophic failure, but they're overkill for the most common recovery scenario in AD environments: an accidentally deleted user, group, or OU. Without the Recycle Bin, recovering a deleted object means pulling the DC offline, restoring from backup, and performing an authoritative restore — a process that can take hours and introduces risk. With it enabled, recovery happens in seconds directly from a GUI with no downtime.
+
+I enabled the feature through Active Directory Administrative Center (ADAC) by selecting the domain root and clicking Enable Recycle Bin under the Tasks panel. After confirming the prompt and refreshing the console, a new Deleted Objects container appeared in the left panel, confirming the feature is active. Any object deleted from this point forward is held in that container for 180 days by default before being permanently purged — giving more than enough time to catch and correct mistakes.
+
+One thing worth noting: the Recycle Bin is a one-way switch. Once enabled, it cannot be disabled. This is by design — disabling it would leave the domain in an inconsistent state since preserved attributes on deleted objects wouldn't exist under the old tombstone model. That trade-off is straightforward: there is no scenario in a production environment where you'd want to go backwards. Enabling it as soon as the domain is stood up is the right call.
+
+**Screenshot:**
+
+![Lab.23 – Active Directory Administrative Center showing the Deleted Objects container confirming the AD Recycle Bin is enabled on MELVINLAB (local)](./screenshots/Lab.23.png)
