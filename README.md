@@ -1,7 +1,7 @@
 ## Hi, I'm Melvin Williams
 **Junior IT Support Technician | Tier 1 Service Desk Professional | Philadelphia, PA**
 
-I am a Junior IT Support Technician and Tier 1 Service Desk professional with a strong technical foundation in modern infrastructure. I hold the **CompTIA Security+**, **CompTIA Network+**, and **Microsoft Azure Fundamentals (AZ-900)** certifications, and I am **CompTIA A+ Core 2 certified** with Core 1 completion in progress.
+I am a Junior IT Support Technician and Tier 1 Service Desk professional with a strong technical foundation in modern infrastructure. I hold the **CompTIA Security+**, **CompTIA Network+**, and **Microsoft Azure Fundamentals (AZ-900)** certifications, and I am fully **CompTIA A+ certified**.
 
 My hands-on technical experience includes managing an enterprise-grade infrastructure lab on Proxmox VE virtualization (Lenovo ThinkCentre M920Q) to administer Active Directory, manage user provisioning, execute password resets, and configure Windows Server 2022. I implement Role-Based Access Control (RBAC), manage security groups, break inheritance, and enforce NTFS permissions for data governance — while administering Microsoft 365 tenants and utilizing ServiceNow for ticketing management.
 
@@ -51,9 +51,8 @@ Verified through Credly and Microsoft:
 
 - [CompTIA Security+](https://www.credly.com/badges/d89c7144-279d-4689-b175-23dd8e4b53d8/public_url)
 - [CompTIA Network+](https://www.credly.com/badges/1e99e8bd-314f-49e6-a138-4fde7a920f02/public_url)
-- CompTIA A+ Core 2 (220-1102)
+- [CompTIA A+ ce Certification](https://www.credly.com/badges/6f2c2e62-5ffd-4e34-94d8-c613f5f69ddd/public_url)
 - [Microsoft Azure Fundamentals (AZ-900)](https://learn.microsoft.com/api/credentials/share/en-us/MelvinWilliams-2022/9BF8F9D963B6FCA9?sharingId=49A91F7AAEFFECF3)
-- CompTIA A+ Core 1 (220-1101) — In Progress
 
 ---
 
