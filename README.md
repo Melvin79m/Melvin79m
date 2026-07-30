@@ -19,8 +19,11 @@ This repository is organized into distinct sections documenting my hands-on IT, 
 
 ### Network & Infrastructure Lab
 
-* **Physical Cisco Network & Proxmox Homelab** — Enterprise-grade home lab built on physical Cisco 2901 routers and 3750X switches with VLAN segmentation, OSPF routing, and EtherChannel. Hosted on a Proxmox VE hypervisor running 14 LXC containers and 2 VMs, with full remote access via Tailscale mesh VPN and a Caddy reverse proxy.
+* **Physical Cisco Network** — Enterprise-grade home lab built on physical Cisco 2901 routers and 3750X switches with VLAN segmentation, OSPF routing, and EtherChannel.
   [View Project](./PhysicalNetwork/README.md)
+
+* **Proxmox VE Homelab** — Bare-metal virtualization platform running 14 LXC containers and 2 VMs across dual network bridges, with a full services stack including Wazuh SIEM, Tailscale mesh VPN, Caddy reverse proxy, and AI agent infrastructure.
+  [View Project](./ProxmoxLab/README.md)
 
 ---
 
