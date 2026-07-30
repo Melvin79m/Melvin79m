@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melvin Williams — Home Lab Network Topology</title>
+  <script src="https://unpkg.com/vis-network@9.1.9/dist/vis-network.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    header {
+      padding: 12px 20px;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+    header h1 { font-size: 15px; font-weight: 600; }
+    header p  { font-size: 12px; color: #8b949e; margin-top: 2px; }
+    .controls { display: flex; gap: 8px; align-items: center; }
+    button {
+      background: #21262d; border: 1px solid #30363d; color: #e6edf3;
+      padding: 5px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;
+    }
+    button:hover { background: #30363d; }
+    #network-wrap { flex: 1; position: relative; min-height: 0; }
+    #network-canvas { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+
+    #legend {
+      position: absolute; bottom: 16px; left: 16px;
+      background: #161b22ee; border: 1px solid #30363d;
+      border-radius: 8px; padding: 12px 16px; font-size: 12px; z-index: 10;
+    }
+    #legend h3 { font-size: 11px; color: #8b949e; text-transform: uppercase;
+                 letter-spacing: .5px; margin-bottom: 8px; }
+    .li { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; color: #c9d1d9; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+
+    #filters {
+      position: absolute; top: 14px; right: 14px;
+      display: flex; flex-direction: column; gap: 5px; z-index: 10;
+    }
+    .fb {
+      background: #21262d; border: 1px solid #30363d; color: #8b949e;
+      padding: 4px 12px; border-radius: 20px; font-size: 11px; cursor: pointer;
+    }
+    .fb.on { border-color: #58a6ff; color: #58a6ff; background: #1c2a3a; }
+    .fb:hover { background: #30363d; }
+
+    #tip {
+      position: absolute; background: #161b22; border: 1px solid #30363d;
+      border-radius: 8px; padding: 10px 14px; font-size: 12px;
+      pointer-events: none; display: none; z-index: 20; max-width: 260px; line-height: 1.7;
+    }
+    #tip b { color: #e6edf3; display: block; margin-bottom: 3px; }
+    #tip span { color: #8b949e; }
+    #tip span em { color: #c9d1d9; font-style: normal; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Home Lab Network Topology</h1>
+    <p>Cisco 2901 Routers · Cisco 3750X Switches · Proxmox VE · Tailscale · 14 LXC Containers · 2 VMs</p>
+  </div>
+  <div class="controls">
+    <button onclick="doFit()">⊙ Fit</button>
+    <button onclick="togglePhysics()">⚡ Physics</button>
+    <button onclick="doReset()">↺ Reset</button>
+  </div>
+</header>
+
+<div id="network-wrap">
+  <div id="network-canvas"></div>
+
+  <div id="legend">
+    <h3>Legend</h3>
+    <div class="li"><div class="dot" style="background:#1f6feb"></div>WAN / Internet</div>
+    <div class="li"><div class="dot" style="background:#1158c7"></div>Cisco Router</div>
+    <div class="li"><div class="dot" style="background:#196c2e"></div>Cisco Switch</div>
+    <div class="li"><div class="dot" style="background:#6e40c9"></div>Proxmox VE Host</div>
+    <div class="li"><div class="dot" style="background:#9e6a03"></div>Endpoint Device</div>
+    <div class="li"><div class="dot" style="background:#5a3ea0"></div>Tailscale VPN</div>
+    <div class="li"><div class="dot" style="background:#1f3a1f"></div>LXC Container</div>
+    <div class="li"><div class="dot" style="background:#3a2a00"></div>Virtual Machine</div>
+  </div>
+
+  <div id="filters">
+    <div class="fb on" onclick="filter(this,'all')">All</div>
+    <div class="fb" onclick="filter(this,'infra')">Infrastructure</div>
+    <div class="fb" onclick="filter(this,'security')">Security</div>
+    <div class="fb" onclick="filter(this,'storage')">Storage</div>
+    <div class="fb" onclick="filter(this,'ai')">AI Agents</div>
+    <div class="fb" onclick="filter(this,'adlab')">AD Lab</div>
+  </div>
+
+  <div id="tip"></div>
+</div>
+
+<script>
+var nodes, edges, net, physicsOn = false;
+
+var nodeList = [
+  // WAN
+  {id:'internet', label:'☁ Internet',         group:'wan',    cat:'core',
+   info:{Type:'WAN Uplink', Note:'Public internet via home ISP'}},
+  {id:'homerouter',label:'Home Router\n10.0.0.1',group:'wan', cat:'core',
+   info:{IP:'10.0.0.1', Role:'Home ISP gateway', WiFi:'10.0.0.x subnet'}},
+  // Routers
+  {id:'r2', label:'R2 — Cisco 2901\nWAN Router',    group:'router', cat:'core',
+   info:{IP:'192.168.12.2', Platform:'CISCO2901 IOS 15.3(3)M5', Link:'192.168.12.0/30 to R1'}},
+  {id:'r1', label:'R1 — Cisco 2901\nInter-VLAN Router', group:'router', cat:'core',
+   info:{IPs:'10.10.10.1 / 10.20.20.1 / 10.30.30.1', Platform:'CISCO2901 IOS 15.3(3)M5',
+         OSPF:'Process 1, Area 0, Router-ID 1.1.1.1',
+         VLANs:'10 Servers/Eng · 20 Operations · 30 Media'}},
+  // Switches
+  {id:'sw1', label:'SW1 — Cisco 3750X\nCore Switch',   group:'sw', cat:'core',
+   info:{IP:'10.10.10.2', Platform:'WS-C3750X IOS 15.2(2)E6',
+         Uplink:'Gi1/0/24 → R1', EtherChannel:'Po1 to SW2 (LACP 802.3ad, Gi1/0/1+2)'}},
+  {id:'sw2', label:'SW2 — Cisco 3750X\nAccess Switch', group:'sw', cat:'core',
+   info:{IP:'10.10.10.3', Platform:'WS-C3750X IOS 15.2(2)E6',
+         EtherChannel:'Po1 to SW1 (LACP 802.3ad)'}},
+  // PVE
+  {id:'pve', label:'Proxmox VE\nLenovo M920Q\n10.10.10.11', group:'pve', cat:'core',
+   info:{IP:'10.10.10.11', CPU:'Intel i7-8700T', RAM:'32GB', Storage:'512GB NVMe + 14TB HDD',
+         OS:'Proxmox VE 9.1.0', Bridges:'vmbr0 VLAN 10/20 · vmbr1 10.40.40.0/24 NAT'}},
+  // Endpoints
+  {id:'laptop',  label:'Admin Laptop\nVLAN 10 · 10.10.10.23', group:'device', cat:'core',
+   info:{IP:'10.10.10.23', VLAN:'10 — Servers/Engineering', Port:'SW1 Gi1/0/5'}},
+  {id:'desktop', label:'Gaming Desktop\nVLAN 20 · 10.20.20.11',group:'device', cat:'core',
+   info:{IP:'10.20.20.11', VLAN:'20 — Operations', Port:'SW2 Gi1/0/5'}},
+  // Tailscale
+  {id:'tailscale', label:'🔒 Tailscale\nMesh VPN', group:'ts', cat:'core',
+   info:{Nodes:'9-node encrypted mesh', Type:'Zero-config WireGuard VPN',
+         Devices:'PVE · Laptop · Phone · Tablet · Apple TV · Sony TV · AdGuard'}},
+  // Infrastructure
+  {id:'adguard',  label:'CT150\nAdGuard DNS',    group:'ct',  cat:'infra',
+   info:{VMID:150, IP:'10.10.10.50', Role:'DNS adblocker + MagicDNS'}},
+  {id:'n8n',      label:'CT201\nn8n :5678',       group:'ct',  cat:'infra',
+   info:{VMID:201, IP:'10.40.40.2', Role:'Workflow automation (vmbr1)'}},
+  {id:'couchdb',  label:'CT202\nCouchDB :5984',   group:'ct',  cat:'infra',
+   info:{VMID:202, IP:'10.40.40.3', Role:'Obsidian LiveSync backend (vmbr1)'}},
+  {id:'kuma',     label:'CT204\nUptime Kuma',     group:'ct',  cat:'infra',
+   info:{VMID:204, IP:'10.40.40.4', Port:':3001', Role:'Uptime monitoring (vmbr1)'}},
+  {id:'vault',    label:'CT205\nVaultwarden',     group:'ct',  cat:'security',
+   info:{VMID:205, IP:'10.40.40.6', Port:':8080', Role:'Self-hosted password manager (Docker)'}},
+  {id:'dashy',    label:'CT207\nDashy :8080',     group:'ct',  cat:'infra',
+   info:{VMID:207, IP:'10.40.40.8', Role:'Command-center dashboard (cyberpunk theme)'}},
+  // Security
+  {id:'wazuh',    label:'CT206\nWazuh SIEM',      group:'ctsec', cat:'security',
+   info:{VMID:206, IP:'10.40.40.7', Port:':443 HTTPS',
+         Role:'Security monitoring / SIEM', Agents:'7 agents across all hosts'}},
+  {id:'hermes',   label:'CT200\nHermes / Thomas', group:'ctsec', cat:'ai',
+   info:{VMID:200, IP:'10.10.10.62', Port:':9119',
+         Role:'Thomas AI agent + Docker', Model:'mistral:latest on Ollama :11434'}},
+  {id:'crewai',   label:'CT203\nCrewAI :8000',    group:'ct',  cat:'ai',
+   info:{VMID:203, IP:'10.40.40.5', Role:'CrewAI multi-agent framework (vmbr1)'}},
+  // Storage
+  {id:'immich',    label:'CT208\nImmich :2283',    group:'ct',  cat:'storage',
+   info:{VMID:208, IP:'10.10.10.33', Role:'Photo management (Docker)',
+         Storage:'/mnt/data/immich on 14TB HDD'}},
+  {id:'nextcloud', label:'CT210\nNextcloud',       group:'ct',  cat:'storage',
+   info:{VMID:210, IP:'10.10.10.35', Port:':11000 app · :8080 AIO mgmt',
+         Role:'Cloud storage (Nextcloud AIO Docker)', Storage:'/mnt/data/nextcloud'}},
+  {id:'syncthing', label:'CT209\nSyncthing :8384', group:'ct',  cat:'storage',
+   info:{VMID:209, IP:'10.10.10.34', Role:'Peer-to-peer file sync'}},
+  // AD Lab
+  {id:'dc01', label:'VM101\nMEL-DC-01\nServer 2022', group:'vm', cat:'adlab',
+   info:{VMID:101, Role:'Windows Server 2022 Domain Controller',
+         Domain:'MELVINLAB.local', RAM:'6GB', Disk:'60GB',
+         Features:'AD DS · DNS · GPO · RBAC · File Services · Volume Shadow Copies'}},
+  {id:'cl01', label:'VM108\nMEL-CL-01\nWindows 11',  group:'vm', cat:'adlab',
+   info:{VMID:108, Role:'Windows 11 Domain Client', RAM:'4GB', Disk:'64GB',
+         Domain:'Joined to MELVINLAB.local'}},
+];
+
+var edgeList = [
+  {from:'internet',  to:'homerouter', label:'WAN',                         color:'#f85149', w:3},
+  {from:'homerouter',to:'r2',         label:'192.168.12.0/30',             color:'#f85149', w:3},
+  {from:'r2',        to:'r1',         label:'192.168.12.0/30',             color:'#f85149', w:3},
+  {from:'r1',        to:'sw1',        label:'Trunk VLAN 10/20/30\nGi0/0 ↔ Gi1/0/24', color:'#3fb950', w:3},
+  {from:'sw1',       to:'sw2',        label:'EtherChannel Po1\nLACP 802.3ad',          color:'#1f6feb', w:3},
+  {from:'sw1',       to:'pve',        label:'Trunk VLAN 10/20\nGi1/0/11',             color:'#3fb950', w:2},
+  {from:'sw1',       to:'laptop',     label:'VLAN 10\nGi1/0/5',                        color:'#1f6feb', w:2},
+  {from:'sw2',       to:'desktop',    label:'VLAN 20\nGi1/0/5',                        color:'#d29922', w:2},
+  {from:'pve',       to:'tailscale',  label:'WireGuard overlay',                        color:'#8b5cf6', w:2, dashes:true},
+  {from:'pve', to:'adguard',   color:'#2d333b', w:1},
+  {from:'pve', to:'n8n',       color:'#2d333b', w:1},
+  {from:'pve', to:'couchdb',   color:'#2d333b', w:1},
+  {from:'pve', to:'kuma',      color:'#2d333b', w:1},
+  {from:'pve', to:'vault',     color:'#2d333b', w:1},
+  {from:'pve', to:'dashy',     color:'#2d333b', w:1},
+  {from:'pve', to:'wazuh',     color:'#2d333b', w:1},
+  {from:'pve', to:'hermes',    color:'#2d333b', w:1},
+  {from:'pve', to:'crewai',    color:'#2d333b', w:1},
+  {from:'pve', to:'immich',    color:'#2d333b', w:1},
+  {from:'pve', to:'nextcloud', color:'#2d333b', w:1},
+  {from:'pve', to:'syncthing', color:'#2d333b', w:1},
+  {from:'pve', to:'dc01',      color:'#2d333b', w:1},
+  {from:'pve', to:'cl01',      color:'#2d333b', w:1},
+];
+
+nodes = new vis.DataSet(nodeList.map(function(n) {
+  return {id: n.id, label: n.label, group: n.group, cat: n.cat, info: n.info};
+}));
+
+edges = new vis.DataSet(edgeList.map(function(e, i) {
+  return {
+    id: i,
+    from: e.from, to: e.to,
+    label: e.label || '',
+    color: {color: e.color || '#444c56', highlight: '#58a6ff', hover: '#58a6ff'},
+    width: e.w || 1,
+    dashes: e.dashes || false,
+    smooth: {type: 'dynamic'},
+    font: {color: e.color || '#6e7681', size: 9, background: '#0d1117', strokeWidth: 0, align: 'middle'},
+    arrows: {to: {enabled: true, scaleFactor: 0.5}},
+  };
+}));
+
+var options = {
+  groups: {
+    wan:    {color:{background:'#1f6feb',border:'#58a6ff'}, font:{color:'#fff',size:12}, shape:'ellipse'},
+    router: {color:{background:'#1158c7',border:'#388bfd'}, font:{color:'#fff',size:11}, shape:'box'},
+    sw:     {color:{background:'#196c2e',border:'#3fb950'}, font:{color:'#fff',size:11}, shape:'box'},
+    pve:    {color:{background:'#6e40c9',border:'#d2a8ff'}, font:{color:'#fff',size:11,bold:true}, shape:'box'},
+    device: {color:{background:'#9e6a03',border:'#e3b341'}, font:{color:'#fff',size:11}, shape:'box'},
+    ts:     {color:{background:'#5a3ea0',border:'#bc8cff'}, font:{color:'#fff',size:12}, shape:'ellipse'},
+    ct:     {color:{background:'#1f3a1f',border:'#3fb950'}, font:{color:'#adbac7',size:10}, shape:'box'},
+    ctsec:  {color:{background:'#3a1f1f',border:'#f85149'}, font:{color:'#adbac7',size:10}, shape:'box'},
+    vm:     {color:{background:'#3a2a00',border:'#e3b341'}, font:{color:'#adbac7',size:10}, shape:'box'},
+  },
+  nodes: {
+    borderWidth: 2,
+    borderWidthSelected: 3,
+    shadow: {enabled:true, color:'rgba(0,0,0,0.6)', size:10, x:2, y:2},
+    font: {face:'Segoe UI, -apple-system, sans-serif'},
+    margin: {top:8, right:10, bottom:8, left:10},
+  },
+  edges: {
+    smooth: {type:'dynamic'},
+    shadow: {enabled:false},
+  },
+  physics: {
+    enabled: true,
+    solver: 'forceAtlas2Based',
+    forceAtlas2Based: {
+      gravitationalConstant: -60,
+      centralGravity: 0.01,
+      springLength: 140,
+      springConstant: 0.06,
+      damping: 0.6,
+      avoidOverlap: 1,
+    },
+    stabilization: {enabled: true, iterations: 300, updateInterval: 25},
+  },
+  interaction: {hover: true, zoomView: true, dragView: true, tooltipDelay: 0},
+};
+
+var container = document.getElementById('network-canvas');
+net = new vis.Network(container, {nodes: nodes, edges: edges}, options);
+
+// Stop physics after stabilization
+net.once('stabilizationIterationsDone', function() {
+  physicsOn = false;
+  net.setOptions({physics: {enabled: false}});
+  net.fit({animation: {duration: 600, easingFunction: 'easeInOutQuad'}});
+});
+
+// Tooltip
+var tip = document.getElementById('tip');
+var wrap = document.getElementById('network-wrap');
+
+net.on('hoverNode', function(p) {
+  var n = nodeList.find(function(x){ return x.id === p.node; });
+  if (!n || !n.info) return;
+  var html = '<b>' + n.label.replace(/\n/g,' — ') + '</b>';
+  Object.keys(n.info).forEach(function(k){
+    html += '<span>' + k + ': <em>' + n.info[k] + '</em></span><br>';
+  });
+  tip.innerHTML = html;
+  tip.style.display = 'block';
+});
+
+net.on('blurNode', function(){ tip.style.display = 'none'; });
+
+wrap.addEventListener('mousemove', function(e) {
+  if (tip.style.display === 'none') return;
+  var r = wrap.getBoundingClientRect();
+  var x = e.clientX - r.left + 16;
+  var y = e.clientY - r.top  + 16;
+  if (x + 270 > r.width)  x = e.clientX - r.left - 280;
+  if (y + 220 > r.height) y = e.clientY - r.top  - 180;
+  tip.style.left = x + 'px';
+  tip.style.top  = y + 'px';
+});
+
+// Controls
+function doFit() { net.fit({animation:{duration:400,easingFunction:'easeInOutQuad'}}); }
+
+function togglePhysics() {
+  physicsOn = !physicsOn;
+  net.setOptions({physics:{enabled: physicsOn}});
+}
+
+function doReset() {
+  physicsOn = true;
+  net.setOptions({physics:{enabled:true, stabilization:{iterations:200}}});
+  net.stabilize(200);
+  setTimeout(function(){ net.fit({animation:{duration:600}}); physicsOn=false; net.setOptions({physics:{enabled:false}}); }, 2500);
+}
+
+// Category filter
+function filter(btn, cat) {
+  document.querySelectorAll('.fb').forEach(function(b){ b.classList.remove('on'); });
+  btn.classList.add('on');
+  var allIds = nodeList.map(function(n){ return n.id; });
+  if (cat === 'all') {
+    nodes.update(allIds.map(function(id){ return {id:id, hidden:false}; }));
+    edges.update(edgeList.map(function(e,i){ return {id:i, hidden:false}; }));
+    return;
+  }
+  var visible = new Set(nodeList.filter(function(n){ return n.cat === 'core' || n.cat === cat; }).map(function(n){ return n.id; }));
+  nodes.update(allIds.map(function(id){ return {id:id, hidden:!visible.has(id)}; }));
+  edges.update(edgeList.map(function(e,i){ return {id:i, hidden:!visible.has(e.from)||!visible.has(e.to)}; }));
+}
+</script>
+</body>
+</html>
