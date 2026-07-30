@@ -19,18 +19,8 @@ This repository is organized into distinct sections documenting my hands-on IT, 
 
 ### Network & Infrastructure Lab
 
-Physical Cisco network with enterprise hypervisor running 14+ containerized services, monitored and remotely accessible via Tailscale mesh VPN.
-
-[![View Interactive Diagram](https://img.shields.io/badge/Live%20Diagram-Interactive-blue?style=for-the-badge&logo=github)](https://melvin79m.github.io/Melvin79m/network/)
-
-![Home Lab Network Topology](./network_diagram.png)
-
-**Infrastructure highlights:**
-- **Routing:** Cisco 2901 routers with inter-VLAN routing (router-on-a-stick), OSPF process 1 Area 0, NAT overload
-- **Switching:** Cisco 3750X core + access switches, LACP EtherChannel (Po1), 802.1Q trunking, VLAN segmentation (10/20/30)
-- **Hypervisor:** Proxmox VE 9.1 on Lenovo M920Q — 14 LXC containers + 2 VMs across dual network bridges
-- **Services:** Wazuh SIEM, Vaultwarden, Nextcloud, Immich, AdGuard DNS, n8n automation, Uptime Kuma, Tailscale exit node
-- **Remote access:** Tailscale 9-node mesh VPN with public HTTPS funnel via Caddy reverse proxy
+* **Physical Cisco Network & Proxmox Homelab** — Enterprise-grade home lab built on physical Cisco 2901 routers and 3750X switches with VLAN segmentation, OSPF routing, and EtherChannel. Hosted on a Proxmox VE hypervisor running 14 LXC containers and 2 VMs, with full remote access via Tailscale mesh VPN and a Caddy reverse proxy.
+  [View Project](./PhysicalNetwork/README.md)
 
 ---
 
