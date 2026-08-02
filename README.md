@@ -27,6 +27,16 @@ This repository is organized into distinct sections documenting my hands-on IT, 
 
 ---
 
+### In Progress
+
+* **AZ-104 Study Journey** — Live, ongoing documentation of my Microsoft Azure Administrator (AZ-104) certification prep: weekly study log, labs, and key takeaways as I work through the Scott Duffy course toward my August 2026 exam target.
+  [View Project](./AZ-104-StudyJourney/README.md)
+
+* **Azure Administrator Lab** — Hands-on Azure lab built alongside AZ-104 prep: Microsoft Entra ID identity management, RBAC, governance, storage, compute, and networking, documented as I work through each exam objective in a real Azure tenant.
+  [View Project](./AzureAdminLab/README.md)
+
+---
+
 ### Featured Project (Current Lab)
 
 * **New Active Directory Help Desk Lab (Proxmox VE)** — My current, primary lab environment built on an enterprise hypervisor. Focused on Windows Server 2022 core infrastructure foundation, realistic 20-user departmental provisioning, Role-Based Access Control (RBAC), delegated local workstation administration, and Help Desk tier-1/tier-2 operational verification.
