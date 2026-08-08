@@ -1,6 +1,10 @@
-# Azure Active Directory Lab — Identity & Access Management
+# Azure Administrator Lab
 
-A three-phase Microsoft Entra ID lab built in a real Azure tenant, using Philadelphia sports organizations as the identity framework. Each group, role, and permission scope maps to a realistic org structure to make access control decisions easier to reason through.
+A hands-on Azure lab built in a real tenant, using Philadelphia sports organizations as the identity framework. Covers identity and access management, networking, compute, storage, and more as the lab expands.
+
+**Technology:** Microsoft Azure · Microsoft Entra ID · Azure Networking · Compute · Storage
+**License:** MIT · **Status:** In Progress
+
 
 **Technology:** Microsoft Azure · Microsoft Entra ID  
 **License:** MIT · **Status:** In Progress
