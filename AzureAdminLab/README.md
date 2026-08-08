@@ -1,14 +1,13 @@
 # Azure Admin Lab — Entra ID Users, Groups & Administrative Units
 
 **Platform:** Microsoft Azure (Entra ID)  
-**Skills:** User management, Security groups, RBAC role assignment, Administrative Units  
-**AZ-104 Objective:** Manage Microsoft Entra identities and governance
+**Skills:** User management, Security groups, RBAC role assignment, Administrative Units
 
 ---
 
 ## What I Built
 
-A working Entra ID environment using Philadelphia sports teams as the user/group structure. The lab covers creating users, organizing them into security groups, assigning directory roles, and scoping those roles with an Administrative Unit — the same concepts tested on the AZ-104 exam.
+A working Entra ID environment using Philadelphia sports teams as the user/group structure. The lab covers creating users, organizing them into security groups, assigning directory roles, and scoping those roles with an Administrative Unit.
 
 ---
 
@@ -22,24 +21,13 @@ Players added as member users in Entra ID, then placed in the `Philadelphia 76er
 ![76ers group members](screenshots/01-76ers-group-members.png)
 
 ### Philadelphia Phillies Group
-Created the `Philadelphia Phillies` security group and added 5 players during setup.
+Created the `Philadelphia Phillies` security group with 5 players:
 
-![Creating Phillies group](screenshots/02-create-phillies-group.png)
-
-**Members:**
-- Zach Wheeler
-- Kyle Schwarber
-- J.T. Realmuto
-- Chris Sanchez
-- Bryce Harper
+![Phillies members](screenshots/04-phillies-members.png)
 
 Both groups visible in the All Groups view — Security type, Assigned membership:
 
 ![All groups — two groups](screenshots/03-all-groups-two.png)
-
-Phillies members confirmed:
-
-![Phillies members](screenshots/04-phillies-members.png)
 
 ---
 
@@ -116,4 +104,4 @@ Added the **Phillies Staff** users as members of the AU — these are the accoun
 | Administrative Units | Citizen Bank Park AU scoping Password Admin to Phillies Staff only |
 | Role scoping | Same users have a *broader* role (Helpdesk Admin, directory-wide) and a *narrower* role (Password Admin, AU-scoped) |
 
-**The key insight:** Administrative Units let you give someone a role without giving them access to the whole tenant. The Phillies players can reset passwords — but only for users inside `Citizen Bank Park`.
+Administrative Units let you give someone a role without giving them access to the whole tenant. The Phillies players can reset passwords — but only for users inside `Citizen Bank Park`.
