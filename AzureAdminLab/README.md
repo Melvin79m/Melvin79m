@@ -1,107 +1,99 @@
+![Project Status](https://img.shields.io/badge/Project-In%20Progress-yellow)
+![Last Update](https://img.shields.io/badge/Last%20Update-August%202026-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Tech Stack](https://img.shields.io/badge/Tech-Microsoft%20Azure%20%7C%20Entra%20ID-lightgrey)
+
 # Azure Admin Lab — Entra ID Users, Groups & Administrative Units
 
-**Platform:** Microsoft Azure (Entra ID)  
-**Skills:** User management, Security groups, RBAC role assignment, Administrative Units
+## Table of Contents
+- [Phase 1: User & Group Foundation](#phase-1-user--group-foundation)
+- [Phase 2: Expanded Groups & Role Assignments](#phase-2-expanded-groups--role-assignments)
+- [Phase 3: Administrative Units & Scoped Permissions](#phase-3-administrative-units--scoped-permissions)
 
 ---
 
-## What I Built
+## Phase 1: User & Group Foundation
 
-A working Entra ID environment using Philadelphia sports teams as the user/group structure. The lab covers creating users, organizing them into security groups, assigning directory roles, and scoping those roles with an Administrative Unit.
+### Phase 1: Step 1 – Philadelphia 76ers Security Group
 
----
+I started the lab by creating member user accounts inside my Entra ID tenant and organizing them into a Security group. Using Philadelphia sports teams as the identity structure gave the environment a realistic feel — each user represents a real person with a distinct identity, which makes permission scenarios easier to reason through as the lab progresses.
 
-## Part 1 — Users & Security Groups (2026-08-05)
+I created the `Philadelphia 76ers` group using the **Security** group type with **Assigned** membership. Assigned membership means users are added manually rather than through dynamic rules, which mirrors how most organizations manage groups for roles and access control. After adding the players as members, I confirmed each account was showing as **Member** type — meaning they are internal cloud-only accounts in the tenant, not external guests.
 
-Created member users across two Philadelphia sports teams and organized them into **Security groups with Assigned membership**.
+**Screenshot:**
 
-### Philadelphia 76ers Group
-Players added as member users in Entra ID, then placed in the `Philadelphia 76ers` security group.
-
-![76ers group members](screenshots/01-76ers-group-members.png)
-
-### Philadelphia Phillies Group
-Created the `Philadelphia Phillies` security group with 5 players:
-
-![Phillies members](screenshots/04-phillies-members.png)
-
-Both groups visible in the All Groups view — Security type, Assigned membership:
-
-![All groups — two groups](screenshots/03-all-groups-two.png)
+![Lab.1 – Philadelphia 76ers security group members](./screenshots/01-76ers-group-members.png)
 
 ---
 
-## Part 2 — Role Assignments & Additional Groups (2026-08-07)
+### Phase 1: Step 2 – Philadelphia Phillies Security Group
 
-### Helpdesk Administrator Role Assignment
-Assigned the **Helpdesk Administrator** built-in role to all 5 Phillies players at **Directory** scope. This gives them the ability to reset passwords for non-admin users across the entire tenant.
+With the 76ers group in place, I repeated the process for the second team. I created the `Philadelphia Phillies` security group and added 5 players as member users. Having two parallel groups from the start allows the lab to demonstrate how permissions and roles can be applied independently to different groups within the same tenant — which becomes important once Administrative Units are introduced in Phase 3.
 
-![Helpdesk Admin assignments](screenshots/05-helpdesk-admin-assignments.png)
+After confirming the members, both groups were visible in the **All Groups** view showing Security type and Assigned membership for each.
 
-### Fans Group
-Created a `Fans` security group with 5 members — separate from team staff and players.
+**Screenshots:**
 
-![Fans group members](screenshots/06-fans-group-members.png)
+![Lab.2 – Philadelphia Phillies security group members](./screenshots/04-phillies-members.png)
 
-**Members:** Brittney Jefferson, James Washington, Jerry Thomas, Kevin Stevenson, Larry Jackson
+![Lab.3 – All Groups view showing both security groups](./screenshots/03-all-groups-two.png)
 
-### Staff Groups
-Created two additional staff groups — one per team:
+---
+
+## Phase 2: Expanded Groups & Role Assignments
+
+### Phase 2: Step 1 – Helpdesk Administrator Role Assignment
+
+With users and groups established, the next step was assigning directory roles to simulate a real IT operations structure. I navigated to **Roles and administrators** in Entra ID and opened the **Helpdesk Administrator** built-in role. This role allows the assigned users to reset passwords and manage service requests for non-administrative accounts — a common responsibility for IT staff in any organization.
+
+I assigned all 5 Phillies players to this role at **Directory** scope, meaning their permissions apply across the entire tenant rather than being restricted to a specific subset. This sets up the contrast that comes later in Phase 3, where the same users will also have a second role assignment that is deliberately scoped down using an Administrative Unit.
+
+**Screenshot:**
+
+![Lab.4 – Helpdesk Administrator role assignments showing Phillies players at Directory scope](./screenshots/05-helpdesk-admin-assignments.png)
+
+---
+
+### Phase 2: Step 2 – Staff & Fan Groups
+
+To build out the full identity structure, I created three additional Security groups: `76ers Staff`, `Phillies Staff`, and `Fans`. The staff groups represent the non-player employees associated with each organization — these are the accounts that the team admins will eventually be responsible for managing. The Fans group represents a general user population that sits outside either team's organizational structure.
+
+All groups were created with Security type and Assigned membership, consistent with the groups from Phase 1.
 
 **76ers Staff** — Max Smith, Nichole Frank, Sam Adams, Sarah Greene, Steve Jones
 
-![76ers Staff members](screenshots/09-76ers-staff-members.png)
+![Lab.5 – 76ers Staff group members](./screenshots/09-76ers-staff-members.png)
 
 **Phillies Staff** — Amber Brown, Brad Thompson, Jackie Wilcox, Jon Walker, Liz Simpson
 
-![Phillies Staff members](screenshots/10-phillies-staff-members.png)
+![Lab.6 – Phillies Staff group members](./screenshots/10-phillies-staff-members.png)
 
-All 5 groups in the final All Groups view:
+**Fans** — Brittney Jefferson, James Washington, Jerry Thomas, Kevin Stevenson, Larry Jackson
 
-![All groups — five groups](screenshots/08-all-groups-five.png)
+![Lab.7 – Fans group members](./screenshots/06-fans-group-members.png)
 
-| Group | Type | Membership |
-|---|---|---|
-| 76ers Staff | Security | Assigned |
-| Fans | Security | Assigned |
-| Philadelphia 76ers | Security | Assigned |
-| Philadelphia Phillies | Security | Assigned |
-| Phillies Staff | Security | Assigned |
+With all groups created, the All Groups view confirmed 5 total security groups in the tenant.
+
+![Lab.8 – All Groups view showing all 5 security groups](./screenshots/08-all-groups-five.png)
 
 ---
 
-## Part 3 — Administrative Unit: Citizen Bank Park
+## Phase 3: Administrative Units & Scoped Permissions
 
-Created an **Administrative Unit** named `Citizen Bank Park` (the Phillies' stadium) to scope admin roles to a specific subset of the directory.
+### Phase 3: Step 1 – Citizen Bank Park Administrative Unit
 
-### AU Creation — Review + Create
-Configured the AU and assigned the **Password Administrator** role to the 5 Phillies players — but scoped *only* to this AU, not the full directory.
+The Helpdesk Administrator role assigned in Phase 2 gives the Phillies players broad access across the entire directory. In most organizations, that level of access is wider than necessary — an IT admin for one department shouldn't have the ability to reset passwords for users in a completely different part of the organization. Administrative Units solve this by restricting the *scope* of a role assignment to a defined subset of the directory rather than the whole tenant.
 
-![Creating Citizen Bank Park AU](screenshots/07-create-citizen-bank-park-au.png)
+I created an Administrative Unit named `Citizen Bank Park` — the Phillies' home stadium — to represent the boundary of the Phillies IT team's authority. During the AU creation wizard, I assigned the **Password Administrator** role to the 5 Phillies players directly within the AU setup, scoping that permission to only the users who would be added as AU members.
 
-**Password Administrator (scoped to Citizen Bank Park AU):**
-- Bryce Harper
-- Chris Sanchez
-- J.T. Realmuto
-- Kyle Schwarber
-- Zach Wheeler
+**Screenshot:**
 
-### AU Members
-Added the **Phillies Staff** users as members of the AU — these are the accounts the scoped admins can manage.
+![Lab.9 – Citizen Bank Park AU Review + Create screen showing Password Administrator assignments](./screenshots/07-create-citizen-bank-park-au.png)
 
-![Citizen Bank Park AU users](screenshots/11-citizen-bank-park-au-users.png)
+After creating the AU, I added the **Phillies Staff** users as members. These are the accounts the scoped Password Administrators can manage — they can reset passwords for any of these 5 users, but their Password Administrator role has no effect on anyone outside this AU.
 
-**AU Members:** Amber Brown, Brad Thompson, Jackie Wilcox, Jon Walker, Liz Simpson
+The result is a layered permission model: the Phillies players hold **Helpdesk Administrator** at directory scope (broad) and **Password Administrator** scoped to Citizen Bank Park (narrow). The same pattern will be replicated for the 76ers in the next phase.
 
----
+**Screenshot:**
 
-## Key Concepts Demonstrated
-
-| Concept | Applied As |
-|---|---|
-| Security groups (Assigned) | 5 groups across two teams + fans |
-| Built-in RBAC role assignment | Helpdesk Admin → Phillies players at directory scope |
-| Administrative Units | Citizen Bank Park AU scoping Password Admin to Phillies Staff only |
-| Role scoping | Same users have a *broader* role (Helpdesk Admin, directory-wide) and a *narrower* role (Password Admin, AU-scoped) |
-
-Administrative Units let you give someone a role without giving them access to the whole tenant. The Phillies players can reset passwords — but only for users inside `Citizen Bank Park`.
+![Lab.10 – Citizen Bank Park AU users showing Phillies Staff as members](./screenshots/11-citizen-bank-park-au-users.png)
