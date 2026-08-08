@@ -29,7 +29,7 @@ This repository is organized into distinct sections documenting my hands-on IT, 
 
 ### In Progress
 
-* **Azure Administrator Lab** — Hands-on Microsoft Entra ID lab built in a live Azure tenant: user provisioning, security group management, RBAC role assignments, and Administrative Units to scope admin permissions to specific subsets of the directory.
+* **Azure Administrator Lab** — Hands-on Azure administration lab built in a live tenant covering identity and governance, compute, storage, networking, and monitoring. Documented phase by phase as each environment is built and configured.
   [View Project](./AzureAdminLab/README.md)
 
 ---
